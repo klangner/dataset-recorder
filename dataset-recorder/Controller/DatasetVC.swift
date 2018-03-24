@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DatasetImagesVC: UIViewController {
+class DatasetVC: UIViewController {
 
     @IBOutlet weak var currentDatasetLabel: UIBarButtonItem!
     
@@ -25,7 +25,9 @@ class DatasetImagesVC: UIViewController {
 
     // Switch to the view which will take new picture
     @IBAction func takePictureTapped(_ sender: Any) {
-        print("Take picture")
+        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
+            present(cameraVC, animated: false, completion: nil)
+        }
     }
     
     @IBAction func selectDatasetTapped(_ sender: Any) {

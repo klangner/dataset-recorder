@@ -50,7 +50,7 @@ class SelectDatasetVC: UIViewController {
     
     // Go back to main view controller
     func showDatasetImagesVC() {
-        if let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetImagesId") as? DatasetImagesVC {
+        if let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetImagesId") as? DatasetVC {
             present(selectDatasetVC, animated: false, completion: nil)
         }
     }

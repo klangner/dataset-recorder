@@ -10,11 +10,13 @@
 		1ECF39422066437A00C4E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF39412066437A00C4E8E5 /* AppDelegate.swift */; };
 		1ECF394F2066437A00C4E8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ECF394D2066437A00C4E8E5 /* LaunchScreen.storyboard */; };
 		1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF3957206643D500C4E8E5 /* DataService.swift */; };
-		1ECF395E2066440500C4E8E5 /* DatasetImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF395A2066440400C4E8E5 /* DatasetImagesVC.swift */; };
+		1ECF395E2066440500C4E8E5 /* DatasetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF395A2066440400C4E8E5 /* DatasetVC.swift */; };
 		1ECF395F2066440500C4E8E5 /* SelectDatasetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF395B2066440400C4E8E5 /* SelectDatasetVC.swift */; };
 		1ECF39652066447700C4E8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ECF39622066447600C4E8E5 /* Assets.xcassets */; };
 		1ECF39662066447700C4E8E5 /* dataset_recorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF39632066447700C4E8E5 /* dataset_recorder.xcdatamodeld */; };
 		1ECF3968206644B100C4E8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ECF3967206644B100C4E8E5 /* Main.storyboard */; };
+		1ECF396A20665DFB00C4E8E5 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF396920665DFB00C4E8E5 /* CameraVC.swift */; };
+		1ECF396C2066648200C4E8E5 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF396B2066648200C4E8E5 /* ImageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +25,13 @@
 		1ECF394E2066437A00C4E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1ECF39502066437A00C4E8E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ECF3957206643D500C4E8E5 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		1ECF395A2066440400C4E8E5 /* DatasetImagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetImagesVC.swift; sourceTree = "<group>"; };
+		1ECF395A2066440400C4E8E5 /* DatasetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetVC.swift; sourceTree = "<group>"; };
 		1ECF395B2066440400C4E8E5 /* SelectDatasetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDatasetVC.swift; sourceTree = "<group>"; };
 		1ECF39622066447600C4E8E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1ECF39642066447700C4E8E5 /* image_dataset_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = image_dataset_app.xcdatamodel; sourceTree = "<group>"; };
 		1ECF3967206644B100C4E8E5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1ECF396920665DFB00C4E8E5 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		1ECF396B2066648200C4E8E5 /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +65,12 @@
 			isa = PBXGroup;
 			children = (
 				1ECF39502066437A00C4E8E5 /* Info.plist */,
-				1ECF39612066444F00C4E8E5 /* Resources */,
-				1ECF39602066442D00C4E8E5 /* Delegates */,
 				1ECF3956206643D500C4E8E5 /* Service */,
 				1ECF39592066440400C4E8E5 /* Controller */,
-				1ECF395C2066440400C4E8E5 /* Extension */,
 				1ECF395D2066440400C4E8E5 /* View */,
+				1ECF395C2066440400C4E8E5 /* Extension */,
+				1ECF39612066444F00C4E8E5 /* Resources */,
+				1ECF39602066442D00C4E8E5 /* Delegates */,
 			);
 			path = "dataset-recorder";
 			sourceTree = "<group>";
@@ -82,8 +86,10 @@
 		1ECF39592066440400C4E8E5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1ECF395A2066440400C4E8E5 /* DatasetImagesVC.swift */,
+				1ECF395A2066440400C4E8E5 /* DatasetVC.swift */,
 				1ECF395B2066440400C4E8E5 /* SelectDatasetVC.swift */,
+				1ECF396920665DFB00C4E8E5 /* CameraVC.swift */,
+				1ECF396B2066648200C4E8E5 /* ImageVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -194,10 +200,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ECF39662066447700C4E8E5 /* dataset_recorder.xcdatamodeld in Sources */,
+				1ECF396A20665DFB00C4E8E5 /* CameraVC.swift in Sources */,
 				1ECF39422066437A00C4E8E5 /* AppDelegate.swift in Sources */,
-				1ECF395E2066440500C4E8E5 /* DatasetImagesVC.swift in Sources */,
+				1ECF395E2066440500C4E8E5 /* DatasetVC.swift in Sources */,
 				1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */,
 				1ECF395F2066440500C4E8E5 /* SelectDatasetVC.swift in Sources */,
+				1ECF396C2066648200C4E8E5 /* ImageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
