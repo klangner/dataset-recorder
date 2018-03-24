@@ -1,5 +1,4 @@
-# image-dataset-app
+# dataset-recorder
 
-iPhone app for building Image Datasets.
+iPhone app for building Machine Learning Datasets.
 
-Those datasets can be used to build Machine Learning models.
