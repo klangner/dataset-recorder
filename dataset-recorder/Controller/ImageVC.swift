@@ -12,7 +12,9 @@ class ImageVC: UIViewController {
 
     var image: UIImage?
     
+    @IBOutlet weak var labelButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +25,25 @@ class ImageVC: UIViewController {
         if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
             present(cameraVC, animated: false, completion: nil)
         }
+    }
+    
+    @IBAction func onLabelTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: "Edit image label", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.text = self.saveButton.isEnabled ? self.labelButton.title : ""
+        })
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
+            let name = alert.textFields!.first!.text!
+            if !name.isEmpty {
+                self.labelButton.title = name
+                self.saveButton.isEnabled = true
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: false)
+    }
+
+    @IBAction func onSaveTapped(_ sender: Any) {
+        print("save image")
     }
 }
