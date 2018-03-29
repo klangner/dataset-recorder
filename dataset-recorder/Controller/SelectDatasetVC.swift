@@ -35,7 +35,7 @@ class SelectDatasetVC: UIViewController {
     }
     
     @IBAction func addNameTapped(_ sender: UIBarButtonItem) {
-        editName(name: "New Dataset", updateHandler: {(name) in
+        editName(name: "", updateHandler: {(name) in
             DataService.instance.addDataset(withName: name, completion: {(dataset) in
                 self.showDatasetImagesVC()
             })
@@ -64,7 +64,9 @@ class SelectDatasetVC: UIViewController {
         })
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
             let name = alert.textFields!.first!.text!
-            updateHandler(name)
+            if !name.isEmpty {
+                updateHandler(name)
+            }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: false)

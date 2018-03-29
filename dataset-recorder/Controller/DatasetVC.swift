@@ -11,6 +11,10 @@ import UIKit
 class DatasetVC: UIViewController {
 
     @IBOutlet weak var currentDatasetLabel: UIBarButtonItem!
+    @IBOutlet weak var dataCollectionView: UICollectionView!
+    
+    var images: [ImageData] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +22,11 @@ class DatasetVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        dataCollectionView.delegate = self
+        dataCollectionView.dataSource = self
         DataService.instance.currentDataset(completion: {(dataset) in
             currentDatasetLabel.title = dataset.name
+            loadData(from: dataset)
         })
     }
 
@@ -36,5 +43,27 @@ class DatasetVC: UIViewController {
         }
     }
     
+    func loadData(from dataset: Dataset) {
+        DataService.instance.datasetImages(from: dataset){ images in
+            self.images = images
+        }
+    }
 }
 
+
+extension DatasetVC: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("Data count: \(images.count)")
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("Render cell")
+        let imageData = images[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath)
+        cell.bounds.size = CGSize(width: 64, height: 64)
+        cell.backgroundView?.backgroundColor = UIColor.red
+        return cell
+    }
+}

@@ -87,4 +87,32 @@ class DataService {
             debugPrint("Could not save \(error.localizedDescription)")
         }
     }
+    
+    // Add image to the current dataset
+    func addImage(image: UIImage, withLabel label: String) {
+        currentDataset(completion: { (dataset) in
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let data = ImageData(context: managedContext)
+            data.dataset = dataset
+            data.image = UIImagePNGRepresentation(image)
+            data.label = label
+            do {
+                try managedContext.save()
+            } catch {
+                debugPrint("Can't save image")
+            }
+        })
+    }
+    
+    func datasetImages(from dataset: Dataset, completion: ([ImageData]) -> ()) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let imageDataFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageData")
+        
+        do {
+            let fetchedImageData = try managedContext.fetch(imageDataFetch) as! [ImageData]
+            completion(fetchedImageData)
+        } catch {
+            fatalError("Failed to fetch image data: \(error)")
+        }
+    }
 }

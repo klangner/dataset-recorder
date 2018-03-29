@@ -3,14 +3,15 @@
     <entity name="Dataset" representedClassName="Dataset" syncable="YES" codeGenerationType="class">
         <attribute name="lastUsed" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageData" inverseName="dataset" inverseEntity="ImageData" syncable="YES"/>
     </entity>
-    <entity name="ImageMetadata" representedClassName="ImageMetadata" syncable="YES" codeGenerationType="class">
+    <entity name="ImageData" representedClassName="ImageData" syncable="YES" codeGenerationType="class">
         <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="label" attributeType="String" syncable="YES"/>
-        <attribute name="preview" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="dataset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dataset" inverseName="images" inverseEntity="Dataset" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="ImageMetadata" positionX="-63" positionY="-27" width="128" height="90"/>
+        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="ImageData" positionX="-63" positionY="-27" width="128" height="90"/>
     </elements>
 </model>

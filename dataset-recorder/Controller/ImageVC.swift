@@ -22,9 +22,7 @@ class ImageVC: UIViewController {
     }
     
     @IBAction func onBackTapped(_ sender: Any) {
-        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
-            present(cameraVC, animated: false, completion: nil)
-        }
+        moveToCameraVC()
     }
     
     @IBAction func onLabelTapped(_ sender: Any) {
@@ -43,7 +41,15 @@ class ImageVC: UIViewController {
         self.present(alert, animated: false)
     }
 
+    // Add image to the dataset
     @IBAction func onSaveTapped(_ sender: Any) {
-        print("save image")
+        DataService.init().addImage(image: imageView.image!, withLabel: labelButton.title!)
+        moveToCameraVC()
+    }
+    
+    func moveToCameraVC() {
+        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
+            present(cameraVC, animated: false, completion: nil)
+        }
     }
 }
