@@ -51,19 +51,24 @@ class DatasetVC: UIViewController {
 }
 
 
-extension DatasetVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DatasetVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Data count: \(images.count)")
         return images.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.bounds.width
+        return CGSize(width: width/4, height: width/3)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("Render cell")
         let imageData = images[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath)
-        cell.bounds.size = CGSize(width: 64, height: 64)
-        cell.backgroundView?.backgroundColor = UIColor.red
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? DataItemCell {
+            cell.imageView.image = UIImage(data: imageData.image!)
+            cell.dataLabel.text = imageData.label
+            return cell
+        }
+        return DataItemCell()
     }
 }

@@ -17,6 +17,7 @@
 		1ECF3968206644B100C4E8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ECF3967206644B100C4E8E5 /* Main.storyboard */; };
 		1ECF396A20665DFB00C4E8E5 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF396920665DFB00C4E8E5 /* CameraVC.swift */; };
 		1ECF396C2066648200C4E8E5 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF396B2066648200C4E8E5 /* ImageVC.swift */; };
+		1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1ECF3967206644B100C4E8E5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1ECF396920665DFB00C4E8E5 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		1ECF396B2066648200C4E8E5 /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
+		1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		1ECF395D2066440400C4E8E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,7 +157,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Krzysztof Langner";
 				TargetAttributes = {
 					1ECF393D2066437A00C4E8E5 = {
@@ -205,6 +208,7 @@
 				1ECF395E2066440500C4E8E5 /* DatasetVC.swift in Sources */,
 				1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */,
 				1ECF395F2066440500C4E8E5 /* SelectDatasetVC.swift in Sources */,
+				1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */,
 				1ECF396C2066648200C4E8E5 /* ImageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +241,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -244,6 +249,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -294,6 +300,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -301,6 +308,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
