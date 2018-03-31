@@ -318,15 +318,9 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rgc-bZ-350"/>
-                                    <barButtonItem title="No label" id="1au-5D-clh">
+                                    <barButtonItem systemItem="save" id="1au-5D-clh">
                                         <connections>
                                             <action selector="onLabelTapped:" destination="vkd-7C-UQM" id="TxN-Gq-mhu"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2Mu-lD-0yT"/>
-                                    <barButtonItem enabled="NO" title="Save" id="lQ4-Lm-NZJ">
-                                        <connections>
-                                            <action selector="onSaveTapped:" destination="vkd-7C-UQM" id="UHr-t3-B4L"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -350,8 +344,6 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="F3n-gu-Ynl" id="Cfp-Yh-TIM"/>
-                        <outlet property="labelButton" destination="1au-5D-clh" id="OQr-PQ-ecV"/>
-                        <outlet property="saveButton" destination="lQ4-Lm-NZJ" id="P3B-xw-PGG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmA-bi-lf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
