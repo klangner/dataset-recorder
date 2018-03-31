@@ -81,9 +81,8 @@ class CameraVC: UIViewController {
     
     // Go back to DatasetVC
     @IBAction func onBackTapped(_ sender: Any) {
-        if let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetImagesId") as? DatasetVC {
-            present(selectDatasetVC, animated: false, completion: nil)
-        }
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetImagesId")
+        present(vc, animated: false, completion: nil)
     }
     
     // Switch flash button

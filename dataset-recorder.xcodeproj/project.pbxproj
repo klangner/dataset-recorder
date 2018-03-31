@@ -18,6 +18,7 @@
 		1ECF396A20665DFB00C4E8E5 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF396920665DFB00C4E8E5 /* CameraVC.swift */; };
 		1ECF396C2066648200C4E8E5 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF396B2066648200C4E8E5 /* ImageVC.swift */; };
 		1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */; };
+		1EEEAAEC206FCE2300D06BFD /* EditDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAEB206FCE2300D06BFD /* EditDataVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		1ECF396920665DFB00C4E8E5 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		1ECF396B2066648200C4E8E5 /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 		1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemCell.swift; sourceTree = "<group>"; };
+		1EEEAAEB206FCE2300D06BFD /* EditDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				1ECF395B2066440400C4E8E5 /* SelectDatasetVC.swift */,
 				1ECF396920665DFB00C4E8E5 /* CameraVC.swift */,
 				1ECF396B2066648200C4E8E5 /* ImageVC.swift */,
+				1EEEAAEB206FCE2300D06BFD /* EditDataVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				1ECF396A20665DFB00C4E8E5 /* CameraVC.swift in Sources */,
 				1ECF39422066437A00C4E8E5 /* AppDelegate.swift in Sources */,
 				1ECF395E2066440500C4E8E5 /* DatasetVC.swift in Sources */,
+				1EEEAAEC206FCE2300D06BFD /* EditDataVC.swift in Sources */,
 				1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */,
 				1ECF395F2066440500C4E8E5 /* SelectDatasetVC.swift in Sources */,
 				1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */,

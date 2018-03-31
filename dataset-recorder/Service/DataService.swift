@@ -104,6 +104,28 @@ class DataService {
         })
     }
     
+    // Save all modifications
+    func save() {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Can't save image")
+        }
+    }
+    
+    // Delete data item
+    func deleteItem(item: ImageData) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(item)
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not delete object \(error.localizedDescription)")
+        }
+    }
+    
+    // Get list of items for the given dataset
     func datasetImages(from dataset: Dataset, completion: ([ImageData]) -> ()) {
         let managedContext = appDelegate.persistentContainer.viewContext
         let imageDataFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageData")
