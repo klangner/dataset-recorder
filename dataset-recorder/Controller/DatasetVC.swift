@@ -42,9 +42,7 @@ class DatasetVC: UIViewController {
     }
     
     func loadData(from dataset: Dataset) {
-        DataService.instance.datasetImages(from: dataset){ images in
-            self.images = images
-        }
+        self.images = DataService.instance.datasetImages(from: dataset)
     }
 }
 

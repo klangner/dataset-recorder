@@ -76,6 +76,14 @@ class DataService {
         }
     }
     
+    // Get list of items for the given dataset
+    func datasetImages(from dataset: Dataset) -> [ImageData]{
+        if let images = dataset.images?.allObjects as? [ImageData] {
+            return images
+        }
+        return []
+    }
+
     // Rename dataset. This can be done only if there is no dataset with this name yet
     func rename(dataset: Dataset, newName: String, completion: (Dataset) -> ()) {
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -122,19 +130,6 @@ class DataService {
             try managedContext.save()
         } catch {
             debugPrint("Could not delete object \(error.localizedDescription)")
-        }
-    }
-    
-    // Get list of items for the given dataset
-    func datasetImages(from dataset: Dataset, completion: ([ImageData]) -> ()) {
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let imageDataFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageData")
-        
-        do {
-            let fetchedImageData = try managedContext.fetch(imageDataFetch) as! [ImageData]
-            completion(fetchedImageData)
-        } catch {
-            fatalError("Failed to fetch image data: \(error)")
         }
     }
 }
