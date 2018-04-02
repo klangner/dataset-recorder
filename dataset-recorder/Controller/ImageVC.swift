@@ -31,7 +31,7 @@ class ImageVC: UIViewController {
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
             let name = alert.textFields!.first!.text!
             if !name.isEmpty {
-                DataService.instance.addImage(image: self.imageView.image!, withLabel: name)
+                DataService.instance.addImage(image: self.image!, withLabel: name)
                 self.moveToCameraVC()
             }
         }))

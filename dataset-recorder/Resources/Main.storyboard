@@ -24,6 +24,11 @@
                                     <constraint firstAttribute="height" constant="44" id="D0V-5p-D2I"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem systemItem="action" id="gMg-gL-e9U">
+                                        <connections>
+                                            <action selector="shareTapped:" destination="EZ5-jM-DIr" id="ieL-M3-9Jf"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="fzi-ac-ULF"/>
                                     <barButtonItem title="Current Dataset" id="fi5-iG-iPS">
                                         <connections>

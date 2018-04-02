@@ -10,14 +10,14 @@ import UIKit
 
 class EditDataVC: UIViewController {
 
-    var dataItem: ImageData!
+    var dataItem: DataItem!
     
     @IBOutlet weak var dataLabel: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(data: dataItem.image!)
+        imageView.image = UIImage(data: dataItem.data!)
         dataLabel.title = dataItem.label!
     }
     

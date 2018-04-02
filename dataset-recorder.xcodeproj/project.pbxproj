@@ -78,15 +78,15 @@
 		1ECF39402066437A00C4E8E5 /* dataset-recorder */ = {
 			isa = PBXGroup;
 			children = (
-				1EEEAAEF207155B600D06BFD /* dataset-recorder.entitlements */,
-				1ECF39502066437A00C4E8E5 /* Info.plist */,
-				1EEEAAED20714AFD00D06BFD /* GoogleService-Info.plist */,
 				1ECF3956206643D500C4E8E5 /* Service */,
 				1ECF39592066440400C4E8E5 /* Controller */,
 				1ECF395D2066440400C4E8E5 /* View */,
 				1ECF395C2066440400C4E8E5 /* Extension */,
 				1ECF39612066444F00C4E8E5 /* Resources */,
 				1ECF39602066442D00C4E8E5 /* Delegates */,
+				1EEEAAED20714AFD00D06BFD /* GoogleService-Info.plist */,
+				1ECF39502066437A00C4E8E5 /* Info.plist */,
+				1EEEAAEF207155B600D06BFD /* dataset-recorder.entitlements */,
 			);
 			path = "dataset-recorder";
 			sourceTree = "<group>";

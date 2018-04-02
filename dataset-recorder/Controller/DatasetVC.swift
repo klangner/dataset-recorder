@@ -12,8 +12,9 @@ class DatasetVC: UIViewController {
 
     @IBOutlet weak var currentDatasetLabel: UIBarButtonItem!
     @IBOutlet weak var dataCollectionView: UICollectionView!
-    
-    var images: [ImageData] = []
+
+    // Cache for dataset items
+    var dataItems: [DataItem] = []
     
     
     override func viewDidLoad() {
@@ -36,13 +37,24 @@ class DatasetVC: UIViewController {
         present(cameraVC, animated: false, completion: nil)
     }
     
+    @IBAction func shareTapped(_ sender: Any) {
+        let imgs: [UIImage] = dataItems.map({(imageData) in UIImage(data: imageData.data!)!})
+        let activityViewController = UIActivityViewController(activityItems: imgs, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // present the view controller
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // Show controller with dataset selection
     @IBAction func selectDatasetTapped(_ sender: Any) {
         let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectDatasetId")
         present(selectDatasetVC, animated: false, completion: nil)
     }
     
+    // Load dataset items
     func loadData(from dataset: Dataset) {
-        self.images = DataService.instance.datasetImages(from: dataset)
+        self.dataItems = DataService.instance.datasetItems(from: dataset)
     }
 }
 
@@ -51,7 +63,7 @@ extension DatasetVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
 
     // Get number of items
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return dataItems.count
     }
     
     // Get cell dimensions
@@ -62,9 +74,9 @@ extension DatasetVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     // Get cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let imageData = images[indexPath.item]
+        let imageData = dataItems[indexPath.item]
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? DataItemCell {
-            cell.imageView.image = UIImage(data: imageData.image!)
+            cell.imageView.image = UIImage(data: imageData.preview!)
             cell.dataLabel.text = imageData.label
             return cell
         }
@@ -73,7 +85,7 @@ extension DatasetVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     // Tapped on cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let imageData = images[indexPath.item]
+        let imageData = dataItems[indexPath.item]
         if let editDataVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editDataVC") as? EditDataVC {
             editDataVC.dataItem = imageData
             present(editDataVC, animated: false, completion: nil)

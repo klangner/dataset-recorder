@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DataItem" representedClassName="DataItem" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="data" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="label" attributeType="String" syncable="YES"/>
+        <attribute name="preview" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="dataset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dataset" inverseName="items" inverseEntity="Dataset" syncable="YES"/>
+    </entity>
     <entity name="Dataset" representedClassName="Dataset" syncable="YES" codeGenerationType="class">
         <attribute name="lastUsed" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageData" inverseName="dataset" inverseEntity="ImageData" syncable="YES"/>
-    </entity>
-    <entity name="ImageData" representedClassName="ImageData" syncable="YES" codeGenerationType="class">
-        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="label" attributeType="String" syncable="YES"/>
-        <relationship name="dataset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dataset" inverseName="images" inverseEntity="Dataset" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataItem" inverseName="dataset" inverseEntity="DataItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="ImageData" positionX="-63" positionY="-27" width="128" height="90"/>
+        <element name="DataItem" positionX="-63" positionY="-27" width="128" height="120"/>
+        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

@@ -1,6 +1,5 @@
 //
 //  DataService.swift
-//  image-dataset-app
 //
 //  Created by Krzysztof Langner on 19/03/2018.
 //  Copyright © 2018 Krzysztof Langner. All rights reserved.
@@ -9,8 +8,15 @@
 import UIKit
 import CoreData
 
+enum DatasetType: String {
+    case image, sensor, sound
+}
+
 
 class DataService {
+    
+    // Size of the preview image
+    let previewSize = CGSize(width: 256, height: 512)
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     static let instance = DataService()
@@ -28,6 +34,7 @@ class DataService {
         let managedContext = appDelegate.persistentContainer.viewContext
         dataset.lastUsed = Date()
         do {
+            dataset.type = DatasetType.image.rawValue
             try managedContext.save()
             completion(dataset)
         } catch {
@@ -68,6 +75,7 @@ class DataService {
         let dataset = Dataset(context: managedContext)
         dataset.name = name
         dataset.lastUsed = Date()
+        dataset.type = DatasetType.image.rawValue
         do {
             try managedContext.save()
             completion(dataset)
@@ -77,37 +85,28 @@ class DataService {
     }
     
     // Get list of items for the given dataset
-    func datasetImages(from dataset: Dataset) -> [ImageData]{
-        if let images = dataset.images?.allObjects as? [ImageData] {
-            return images
+    func datasetItems(from dataset: Dataset) -> [DataItem]{
+        if let items = dataset.items?.allObjects as? [DataItem] {
+            return items
         }
         return []
     }
 
-    // Rename dataset. This can be done only if there is no dataset with this name yet
-    func rename(dataset: Dataset, newName: String, completion: (Dataset) -> ()) {
-        let managedContext = appDelegate.persistentContainer.viewContext
-        dataset.name = newName
-        do {
-            try managedContext.save()
-            completion(dataset)
-        } catch {
-            debugPrint("Could not save \(error.localizedDescription)")
-        }
-    }
-    
-    // Add image to the current dataset
+    // Add image item to the current dataset
     func addImage(image: UIImage, withLabel label: String) {
         currentDataset(completion: { (dataset) in
             let managedContext = appDelegate.persistentContainer.viewContext
-            let data = ImageData(context: managedContext)
-            data.dataset = dataset
-            data.image = UIImagePNGRepresentation(image)
-            data.label = label
+            let item = DataItem(context: managedContext)
+            let data = UIImageJPEGRepresentation(image, 1.0)
+            item.dataset = dataset
+            item.data = data
+            item.preview = data
+            item.label = label
+            item.createdAt = Date()
             do {
                 try managedContext.save()
             } catch {
-                debugPrint("Can't save image")
+                debugPrint("Can't save image \(error)")
             }
         })
     }
@@ -123,7 +122,7 @@ class DataService {
     }
     
     // Delete data item
-    func deleteItem(item: ImageData) {
+    func deleteItem(item: DataItem) {
         let managedContext = appDelegate.persistentContainer.viewContext
         managedContext.delete(item)
         do {

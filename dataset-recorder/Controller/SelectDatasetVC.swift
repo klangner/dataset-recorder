@@ -122,10 +122,10 @@ extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
     func editCell(at indexPath: IndexPath) {
         let dataset = datasetNames[indexPath.row]
         editName(name: dataset.name!, updateHandler: {(newName) in
-            DataService.instance.rename(dataset: dataset, newName: newName) { (dataset) in
-                self.loadDatasets()
-                self.datasetsTableView.reloadRows(at: [indexPath], with: .fade)
-            }
+            dataset.name = newName
+            DataService.instance.save()
+            self.loadDatasets()
+            self.datasetsTableView.reloadRows(at: [indexPath], with: .fade)
         })
     }
 }
