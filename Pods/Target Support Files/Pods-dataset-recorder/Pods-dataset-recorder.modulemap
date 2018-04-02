@@ -1,0 +1,6 @@
+framework module Pods_dataset_recorder {
+  umbrella header "Pods-dataset-recorder-umbrella.h"
+
+  export *
+  module * { export * }
+}

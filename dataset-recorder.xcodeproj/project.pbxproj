@@ -19,6 +19,8 @@
 		1ECF396C2066648200C4E8E5 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF396B2066648200C4E8E5 /* ImageVC.swift */; };
 		1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */; };
 		1EEEAAEC206FCE2300D06BFD /* EditDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAEB206FCE2300D06BFD /* EditDataVC.swift */; };
+		1EEEAAEE20714AFD00D06BFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EEEAAED20714AFD00D06BFD /* GoogleService-Info.plist */; };
+		D0A010FE616041A6C6325839 /* Pods_dataset_recorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4152AAD942B6E3CE2D688 /* Pods_dataset_recorder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,11 @@
 		1ECF396B2066648200C4E8E5 /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 		1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemCell.swift; sourceTree = "<group>"; };
 		1EEEAAEB206FCE2300D06BFD /* EditDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataVC.swift; sourceTree = "<group>"; };
+		1EEEAAED20714AFD00D06BFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1EEEAAEF207155B600D06BFD /* dataset-recorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dataset-recorder.entitlements"; sourceTree = "<group>"; };
+		263857B2BD463FED5623E121 /* Pods-dataset-recorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dataset-recorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dataset-recorder/Pods-dataset-recorder.debug.xcconfig"; sourceTree = "<group>"; };
+		CED4152AAD942B6E3CE2D688 /* Pods_dataset_recorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dataset_recorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFD1E392371800828AB2141B /* Pods-dataset-recorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dataset-recorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-dataset-recorder/Pods-dataset-recorder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A010FE616041A6C6325839 /* Pods_dataset_recorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +62,8 @@
 			children = (
 				1ECF39402066437A00C4E8E5 /* dataset-recorder */,
 				1ECF393F2066437A00C4E8E5 /* Products */,
+				9F433ABB9411B25E4AE30960 /* Pods */,
+				4BAC00F4D36D1697F8DE11ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +78,9 @@
 		1ECF39402066437A00C4E8E5 /* dataset-recorder */ = {
 			isa = PBXGroup;
 			children = (
+				1EEEAAEF207155B600D06BFD /* dataset-recorder.entitlements */,
 				1ECF39502066437A00C4E8E5 /* Info.plist */,
+				1EEEAAED20714AFD00D06BFD /* GoogleService-Info.plist */,
 				1ECF3956206643D500C4E8E5 /* Service */,
 				1ECF39592066440400C4E8E5 /* Controller */,
 				1ECF395D2066440400C4E8E5 /* View */,
@@ -133,6 +145,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4BAC00F4D36D1697F8DE11ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CED4152AAD942B6E3CE2D688 /* Pods_dataset_recorder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F433ABB9411B25E4AE30960 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				263857B2BD463FED5623E121 /* Pods-dataset-recorder.debug.xcconfig */,
+				EFD1E392371800828AB2141B /* Pods-dataset-recorder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1ECF39532066437A00C4E8E5 /* Build configuration list for PBXNativeTarget "dataset-recorder" */;
 			buildPhases = (
+				35B595816C21DD2D9AAE7A00 /* [CP] Check Pods Manifest.lock */,
 				1ECF393A2066437A00C4E8E5 /* Sources */,
 				1ECF393B2066437A00C4E8E5 /* Frameworks */,
 				1ECF393C2066437A00C4E8E5 /* Resources */,
+				3757348063BBD2486B2C6C9E /* [CP] Embed Pods Frameworks */,
+				5FC7A07B25590B9D24475CC1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -166,6 +198,11 @@
 					1ECF393D2066437A00C4E8E5 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -193,12 +230,71 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ECF3968206644B100C4E8E5 /* Main.storyboard in Resources */,
+				1EEEAAEE20714AFD00D06BFD /* GoogleService-Info.plist in Resources */,
 				1ECF394F2066437A00C4E8E5 /* LaunchScreen.storyboard in Resources */,
 				1ECF39652066447700C4E8E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35B595816C21DD2D9AAE7A00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dataset-recorder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3757348063BBD2486B2C6C9E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-dataset-recorder/Pods-dataset-recorder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dataset-recorder/Pods-dataset-recorder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FC7A07B25590B9D24475CC1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dataset-recorder/Pods-dataset-recorder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1ECF393A2066437A00C4E8E5 /* Sources */ = {
@@ -344,8 +440,10 @@
 		};
 		1ECF39542066437A00C4E8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 263857B2BD463FED5623E121 /* Pods-dataset-recorder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "dataset-recorder/dataset-recorder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R2P772U892;
 				INFOPLIST_FILE = "dataset-recorder/Info.plist";
@@ -359,8 +457,10 @@
 		};
 		1ECF39552066437A00C4E8E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFD1E392371800828AB2141B /* Pods-dataset-recorder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "dataset-recorder/dataset-recorder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R2P772U892;
 				INFOPLIST_FILE = "dataset-recorder/Info.plist";
