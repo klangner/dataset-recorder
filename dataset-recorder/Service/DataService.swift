@@ -19,24 +19,32 @@ class DataService {
     let previewSize = CGSize(width: 256, height: 512)
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private var currentDataset: Dataset!
     static let instance = DataService()
     
     func currentDataset(completion: (Dataset) -> ()) {
-        fetchDatasets(completion: {(datasets) in
-            if datasets.count > 0 { completion(datasets[0])}
-            else { self.addDataset(withName: "My Dataset", completion: completion) }
-        })
+        if let currentDataset = currentDataset {
+            completion(currentDataset)
+        } else {
+            fetchDatasets(completion: {(datasets) in
+                if datasets.count > 0 {
+                    currentDataset = datasets[0]
+                } else {
+                    currentDataset = addDataset(withName: "My Dataset")
+                }
+                completion(currentDataset)
+            })
+        }
     }
 
-    // To make dataset current one all we need to do is change it lastUsed date to now
-    // Since current dataset is the one last used
-    func setCurrentDataset(dataset: Dataset, completion: (Dataset) -> ()) {
+    // Set the dataset as current and change lastUsed date
+    func setCurrentDataset(dataset: Dataset) {
         let managedContext = appDelegate.persistentContainer.viewContext
         dataset.lastUsed = Date()
+        currentDataset = dataset
         do {
             dataset.type = DatasetType.image.rawValue
             try managedContext.save()
-            completion(dataset)
         } catch {
             debugPrint("Could not save \(error.localizedDescription)")
         }
@@ -70,7 +78,7 @@ class DataService {
     }
     
     // Add new dataset with given name
-    func addDataset(withName name: String, completion: (Dataset) -> ()) {
+    func addDataset(withName name: String) -> Dataset {
         let managedContext = appDelegate.persistentContainer.viewContext
         let dataset = Dataset(context: managedContext)
         dataset.name = name
@@ -78,10 +86,10 @@ class DataService {
         dataset.type = DatasetType.image.rawValue
         do {
             try managedContext.save()
-            completion(dataset)
         } catch {
             debugPrint("Could not save \(error.localizedDescription)")
         }
+        return dataset
     }
     
     // Get list of items for the given dataset

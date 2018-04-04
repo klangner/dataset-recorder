@@ -38,8 +38,7 @@ class DatasetVC: UIViewController {
     }
     
     @IBAction func shareTapped(_ sender: Any) {
-        let imgs: [UIImage] = dataItems.map({(imageData) in UIImage(data: imageData.data!)!})
-        let activityViewController = UIActivityViewController(activityItems: imgs, applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: dataItems, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // present the view controller

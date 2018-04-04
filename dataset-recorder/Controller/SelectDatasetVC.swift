@@ -36,16 +36,14 @@ class SelectDatasetVC: UIViewController {
     
     @IBAction func addNameTapped(_ sender: UIBarButtonItem) {
         editName(name: "", updateHandler: {(name) in
-            DataService.instance.addDataset(withName: name, completion: {(dataset) in
-                self.showDatasetImagesVC()
-            })
+            let dataset = DataService.instance.addDataset(withName: name)
+            self.selectDataset(dataset: dataset)
         })
     }
     
     func selectDataset(dataset: Dataset) {
-        DataService.instance.setCurrentDataset(dataset: dataset, completion: {(dataset) in
-            showDatasetImagesVC()
-        })
+        DataService.instance.setCurrentDataset(dataset: dataset)
+        showDatasetImagesVC()
     }
     
     // Go back to main view controller
