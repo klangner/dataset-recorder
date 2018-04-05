@@ -8,6 +8,8 @@
 
 import Foundation
 
+// ------------------------------------------------------------------------
+// Date
 extension Date {
     
     // Convert date to ISO format
@@ -24,10 +26,31 @@ extension Date {
     }
 }
 
+
+// ------------------------------------------------------------------------
+// DataItem
 extension DataItem {
     func fileUrl() -> URL {
         let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let url = docDir.appendingPathComponent(fileName!)
         return url
+    }
+}
+
+
+// ------------------------------------------------------------------------
+// FileManager
+extension FileManager {
+
+    func clearTmpDirectory() {
+        do {
+            let tmpDirectory = try contentsOfDirectory(atPath: NSTemporaryDirectory())
+            try tmpDirectory.forEach {[unowned self] file in
+                let path = String.init(format: "%@%@", NSTemporaryDirectory(), file)
+                try self.removeItem(atPath: path)
+            }
+        } catch {
+            print(error)
+        }
     }
 }

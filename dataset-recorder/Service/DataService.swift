@@ -143,6 +143,25 @@ class DataService {
         let managedContext = appDelegate.persistentContainer.viewContext
         managedContext.delete(item)
         do {
+            let docDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let url = docDir.appendingPathComponent(item.fileName!)
+            try FileManager.default.removeItem(at: url)
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not delete object \(error.localizedDescription)")
+        }
+    }
+
+    // Delete multiple data items
+    func deleteItems(items: [DataItem]) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        do {
+            let docDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            for item in items {
+                let url = docDir.appendingPathComponent(item.fileName!)
+                managedContext.delete(item)
+                try FileManager.default.removeItem(at: url)
+            }
             try managedContext.save()
         } catch {
             debugPrint("Could not delete object \(error.localizedDescription)")

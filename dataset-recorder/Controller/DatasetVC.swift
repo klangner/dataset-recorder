@@ -38,12 +38,43 @@ class DatasetVC: UIViewController {
     }
     
     @IBAction func shareTapped(_ sender: Any) {
-        let urls = dataItems.map { (dataItem) in dataItem.fileUrl() }
+        let dataUrls = dataItems.map { (dataItem) in dataItem.fileUrl() }
+        let urls = dataUrls + [datasetCsv()]
         let activityViewController = UIActivityViewController(activityItems: urls, applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = dataSharedHandler
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // present the view controller
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // Create file in temp directory with CSV data for current dataset
+    func datasetCsv() -> URL {
+        let fileName = "dataset_\(Date().isoFormat()).csv"
+        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        var text = "file,label\n"
+        for dataItem in dataItems {
+            text += "\(dataItem.fileName!),\(dataItem.label!)\n"
+        }
+        do {
+            try text.write(to: fileURL, atomically: false, encoding: .utf8)
+        }
+        catch {
+            debugPrint("Can't creare dataset.csv: \(error)")
+        }
+        return fileURL
+    }
+    
+    // After data has been send to the other application we will remove it from dataset on the device
+    // The reason for this is to not send the same data multiple times
+    func dataSharedHandler(_ activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) {
+        FileManager.default.clearTmpDirectory()
+        if completed {
+            DataService.instance.deleteItems(items: dataItems)
+            DataService.instance.currentDataset(completion: { (dataset) in
+                loadData(from: dataset)
+            })
+        }
     }
     
     // Show controller with dataset selection
@@ -54,11 +85,13 @@ class DatasetVC: UIViewController {
     
     // Load dataset items
     func loadData(from dataset: Dataset) {
-        self.dataItems = DataService.instance.datasetItems(from: dataset)
+        dataItems = DataService.instance.datasetItems(from: dataset)
+        dataCollectionView.reloadData()
     }
 }
 
 
+// Extension for working with collection view
 extension DatasetVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // Get number of items
