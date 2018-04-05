@@ -38,7 +38,8 @@ class DatasetVC: UIViewController {
     }
     
     @IBAction func shareTapped(_ sender: Any) {
-        let activityViewController = UIActivityViewController(activityItems: dataItems, applicationActivities: nil)
+        let urls = dataItems.map { (dataItem) in URL(fileURLWithPath: dataItem.filePath!) }
+        let activityViewController = UIActivityViewController(activityItems: urls, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // present the view controller

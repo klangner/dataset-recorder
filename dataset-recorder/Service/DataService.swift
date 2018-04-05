@@ -102,21 +102,37 @@ class DataService {
 
     // Add image item to the current dataset
     func addImage(image: UIImage, withLabel label: String) {
+        guard let data = UIImageJPEGRepresentation(image, 1.0) else { return }
         currentDataset(completion: { (dataset) in
             let managedContext = appDelegate.persistentContainer.viewContext
             let item = DataItem(context: managedContext)
-            let data = UIImageJPEGRepresentation(image, 1.0)
-            item.dataset = dataset
-            item.data = data
-            item.preview = data
-            item.label = label
-            item.createdAt = Date()
+            let now = Date()
+            let fileName = "image_\(self.isoFormat(from: now)).jpg"
             do {
+                item.dataset = dataset
+                item.filePath = try saveToFile(data: data, name: fileName).path
+                item.preview = data
+                item.label = label
+                item.createdAt = now
                 try managedContext.save()
             } catch {
                 debugPrint("Can't save image \(error)")
             }
         })
+    }
+    
+    private func isoFormat(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter.string(from: date)
+    }
+    
+    private func saveToFile(data: Data, name: String) throws -> URL {
+        let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let url = docDir.appendingPathComponent(name)
+        try data.write(to: url)
+        return url
     }
     
     // Save all modifications
