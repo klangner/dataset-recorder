@@ -20,6 +20,7 @@
 		1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAE9206FB52100D06BFD /* DataItemCell.swift */; };
 		1EEEAAEC206FCE2300D06BFD /* EditDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAEB206FCE2300D06BFD /* EditDataVC.swift */; };
 		1EEEAAEE20714AFD00D06BFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EEEAAED20714AFD00D06BFD /* GoogleService-Info.plist */; };
+		1EEEAAF32076146F00D06BFD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEAAF22076146F00D06BFD /* Extensions.swift */; };
 		D0A010FE616041A6C6325839 /* Pods_dataset_recorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4152AAD942B6E3CE2D688 /* Pods_dataset_recorder.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		1EEEAAEB206FCE2300D06BFD /* EditDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataVC.swift; sourceTree = "<group>"; };
 		1EEEAAED20714AFD00D06BFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EEEAAEF207155B600D06BFD /* dataset-recorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dataset-recorder.entitlements"; sourceTree = "<group>"; };
+		1EEEAAF22076146F00D06BFD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		263857B2BD463FED5623E121 /* Pods-dataset-recorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dataset-recorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dataset-recorder/Pods-dataset-recorder.debug.xcconfig"; sourceTree = "<group>"; };
 		CED4152AAD942B6E3CE2D688 /* Pods_dataset_recorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dataset_recorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD1E392371800828AB2141B /* Pods-dataset-recorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dataset-recorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-dataset-recorder/Pods-dataset-recorder.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		1ECF395C2066440400C4E8E5 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1EEEAAF22076146F00D06BFD /* Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				1ECF39422066437A00C4E8E5 /* AppDelegate.swift in Sources */,
 				1ECF395E2066440500C4E8E5 /* DatasetVC.swift in Sources */,
 				1EEEAAEC206FCE2300D06BFD /* EditDataVC.swift in Sources */,
+				1EEEAAF32076146F00D06BFD /* Extensions.swift in Sources */,
 				1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */,
 				1ECF395F2066440500C4E8E5 /* SelectDatasetVC.swift in Sources */,
 				1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */,

@@ -17,7 +17,7 @@ class EditDataVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(contentsOfFile: dataItem.filePath!)
+        imageView.image = UIImage(contentsOfFile: dataItem.fileUrl().path)
         dataLabel.title = dataItem.label!
     }
     

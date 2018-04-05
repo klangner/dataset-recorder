@@ -107,10 +107,11 @@ class DataService {
             let managedContext = appDelegate.persistentContainer.viewContext
             let item = DataItem(context: managedContext)
             let now = Date()
-            let fileName = "image_\(self.isoFormat(from: now)).jpg"
+            let fileName = "image_\(now.isoFormat()).jpg"
             do {
+                try saveToFile(data: data, name: fileName)
                 item.dataset = dataset
-                item.filePath = try saveToFile(data: data, name: fileName).path
+                item.fileName = fileName
                 item.preview = data
                 item.label = label
                 item.createdAt = now
@@ -121,18 +122,10 @@ class DataService {
         })
     }
     
-    private func isoFormat(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        return formatter.string(from: date)
-    }
-    
-    private func saveToFile(data: Data, name: String) throws -> URL {
+    private func saveToFile(data: Data, name: String) throws {
         let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let url = docDir.appendingPathComponent(name)
         try data.write(to: url)
-        return url
     }
     
     // Save all modifications
