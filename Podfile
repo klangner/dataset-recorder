@@ -6,8 +6,8 @@ target 'dataset-recorder' do
   use_frameworks!
 
   # Pods for dataset-recorder
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Storage'
+#  pod 'Firebase/Core'
+#  pod 'Firebase/Auth'
+#  pod 'Firebase/Storage'
 
 end
