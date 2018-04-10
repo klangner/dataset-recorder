@@ -29,6 +29,7 @@ class CameraVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        loadFlashState()
         let tap = UITapGestureRecognizer(target: self, action: #selector(onCameraViewTapped))
         tap.numberOfTapsRequired = 1
         captureSession = AVCaptureSession()
@@ -56,6 +57,17 @@ class CameraVC: UIViewController {
         } catch {
             debugPrint(error)
         }
+    }
+    
+    // Load flash state from user defaults
+    private func loadFlashState() {
+        let defaults = UserDefaults.standard
+        if let mode = AVCaptureDevice.FlashMode(rawValue: defaults.integer(forKey: "FlashMode")) {
+            flashMode = mode
+        } else {
+            flashMode = .off
+        }
+        updateFlashButtonTitle(mode: flashMode)
     }
     
     // Take photo when view tapped
@@ -88,11 +100,29 @@ class CameraVC: UIViewController {
     // Switch flash button
     @IBAction func flashButtonTapped(_ sender: Any) {
         if flashMode == .on {
-            flashButton.title = "Flash OFF"
+            flashMode = .auto
+        } else if flashMode == .auto {
             flashMode = .off
         } else {
-            flashButton.title = "Flash ON"
             flashMode = .on
+        }
+        updateFlashButtonTitle(mode: flashMode)
+        let defaults = UserDefaults.standard
+        defaults.set(flashMode.rawValue, forKey: "FlashMode")
+    }
+    
+    // Set flash mode and update label
+    func updateFlashButtonTitle(mode: AVCaptureDevice.FlashMode) {
+        switch mode {
+        case .off:
+            flashButton.title = "Flash OFF"
+            break
+        case .on:
+            flashButton.title = "Flash ON"
+            break
+        case .auto:
+            flashButton.title = "Flash AUTO"
+            break
         }
     }
 }
