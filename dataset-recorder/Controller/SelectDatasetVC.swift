@@ -81,7 +81,7 @@ extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
 
     // Show item
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "datasetNameCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DatasetNameCell", for: indexPath)
         let dataset = datasetNames[indexPath.row]
         cell.textLabel?.text = dataset.name
         if indexPath.row == 0 {
