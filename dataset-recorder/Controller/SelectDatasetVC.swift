@@ -48,9 +48,8 @@ class SelectDatasetVC: UIViewController {
     
     // Go back to main view controller
     func showDatasetImagesVC() {
-        if let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetImagesId") as? DatasetVC {
-            present(selectDatasetVC, animated: false, completion: nil)
-        }
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetVC")
+        present(vc, animated: false, completion: nil)
     }
     
     // Show alert which will allow to edit cell text

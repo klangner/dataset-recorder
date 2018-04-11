@@ -93,7 +93,7 @@ class CameraVC: UIViewController {
     
     // Go back to DatasetVC
     @IBAction func onBackTapped(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetImagesId")
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetVC")
         present(vc, animated: false, completion: nil)
     }
     

@@ -7,14 +7,20 @@
         <attribute name="preview" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="dataset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dataset" inverseName="items" inverseEntity="Dataset" syncable="YES"/>
     </entity>
+    <entity name="DataLabel" representedClassName="DataLabel" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dataset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dataset" inverseName="labels" inverseEntity="Dataset" syncable="YES"/>
+    </entity>
     <entity name="Dataset" representedClassName="Dataset" syncable="YES" codeGenerationType="class">
         <attribute name="lastUsed" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataItem" inverseName="dataset" inverseEntity="DataItem" syncable="YES"/>
+        <relationship name="labels" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DataLabel" inverseName="dataset" inverseEntity="DataLabel" syncable="YES"/>
     </entity>
     <elements>
         <element name="DataItem" positionX="-63" positionY="-27" width="128" height="120"/>
-        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="DataLabel" positionX="-54" positionY="18" width="128" height="75"/>
     </elements>
 </model>
