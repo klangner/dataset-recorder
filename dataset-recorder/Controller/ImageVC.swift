@@ -14,6 +14,7 @@ class ImageVC: UIViewController {
     var image: UIImage?
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var labelsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,36 +22,14 @@ class ImageVC: UIViewController {
             self.dataset = dataset
         }
         imageView.image = image
+        labelsTableView.dataSource = self
+        labelsTableView.delegate = self
     }
     
     @IBAction func onBackTapped(_ sender: Any) {
         moveToCameraVC()
     }
     
-    // Edit label and save image
-    @IBAction func onLabelTapped(_ sender: Any) {
-        let labels = DataService.instance.datasetLabels(from: dataset)
-        let alertView = UIAlertController(title: "Image label", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 50, width: 260, height: 200))
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
-        
-        alertView.view.addSubview(pickerView)
-        alertView.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
-            let row = pickerView.selectedRow(inComponent: 0)
-            let name = labels[row].name!
-            if !name.isEmpty {
-                DataService.instance.addImage(image: self.image!, withLabel: name)
-                self.moveToCameraVC()
-            }
-        }))
-        alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertView, animated: true, completion: { () in
-            pickerView.frame.size.width = alertView.view.frame.size.width
-        })
-    }
-
     func moveToCameraVC() {
         if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
             present(cameraVC, animated: false, completion: nil)
@@ -58,19 +37,27 @@ class ImageVC: UIViewController {
     }
 }
 
-extension ImageVC: UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+extension ImageVC: UITableViewDelegate, UITableViewDataSource {
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let labels = DataService.instance.datasetLabels(from: dataset)
+    // Number of items in table view
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let labels = dataset?.labels else { return 0 }
         return labels.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    // Show item
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EditLabelCell", for: indexPath)
         let labels = DataService.instance.datasetLabels(from: dataset)
-        return labels[row].name!
+        cell.textLabel?.text = labels[indexPath.row].name
+        return cell
     }
     
+    // After row is selected we want to save image and go back to camera view
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let labels = DataService.instance.datasetLabels(from: dataset)
+        let dataLabel = labels[indexPath.row]
+        DataService.instance.addImage(image: self.image!, withLabel: dataLabel.name!)
+        self.moveToCameraVC()
+    }
 }

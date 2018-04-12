@@ -313,48 +313,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEt-wf-O6d">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="472" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="iUX-R3-9AM"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Back" id="0Sv-3F-B8h">
+                                    <barButtonItem title="Cancel" id="0Sv-3F-B8h">
                                         <connections>
                                             <action selector="onBackTapped:" destination="vkd-7C-UQM" id="k8U-bu-DEd"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rgc-bZ-350"/>
-                                    <barButtonItem systemItem="save" id="1au-5D-clh">
-                                        <connections>
-                                            <action selector="onLabelTapped:" destination="vkd-7C-UQM" id="TxN-Gq-mhu"/>
-                                        </connections>
+                                    <barButtonItem title="Select Label" id="1au-5D-clh">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OF2-Pc-PP0"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YaN-gQ-8Vb"/>
                                 </items>
                             </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hCe-k5-XuS">
+                                <rect key="frame" x="0.0" y="516" width="414" height="220"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="IQq-SX-YXF"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EditLabelCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditLabelCell" id="osw-nO-4MW">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="osw-nO-4MW" id="amZ-YC-Z05">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F3n-gu-Ynl">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="452"/>
                                 <color key="backgroundColor" red="0.42745098040000001" green="0.73725490199999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tEt-wf-O6d" firstAttribute="top" secondItem="Um0-XA-dKz" secondAttribute="top" id="1PN-7C-jsY"/>
                             <constraint firstItem="Um0-XA-dKz" firstAttribute="trailing" secondItem="F3n-gu-Ynl" secondAttribute="trailing" id="3Ke-7K-WgK"/>
-                            <constraint firstItem="F3n-gu-Ynl" firstAttribute="top" secondItem="tEt-wf-O6d" secondAttribute="bottom" id="GQC-bF-qWk"/>
-                            <constraint firstItem="Um0-XA-dKz" firstAttribute="bottom" secondItem="F3n-gu-Ynl" secondAttribute="bottom" id="O0c-4m-MDd"/>
+                            <constraint firstItem="F3n-gu-Ynl" firstAttribute="top" secondItem="Um0-XA-dKz" secondAttribute="top" id="GQC-bF-qWk"/>
+                            <constraint firstItem="hCe-k5-XuS" firstAttribute="top" secondItem="tEt-wf-O6d" secondAttribute="bottom" id="JVQ-du-5BS"/>
                             <constraint firstItem="tEt-wf-O6d" firstAttribute="leading" secondItem="Um0-XA-dKz" secondAttribute="leading" id="O4d-nt-2Qj"/>
                             <constraint firstItem="tEt-wf-O6d" firstAttribute="trailing" secondItem="Um0-XA-dKz" secondAttribute="trailing" id="RhR-ta-8Sr"/>
+                            <constraint firstItem="hCe-k5-XuS" firstAttribute="bottom" secondItem="Um0-XA-dKz" secondAttribute="bottom" id="YHg-2e-ehp"/>
+                            <constraint firstItem="tEt-wf-O6d" firstAttribute="top" secondItem="F3n-gu-Ynl" secondAttribute="bottom" id="acO-gv-YY8"/>
                             <constraint firstItem="F3n-gu-Ynl" firstAttribute="leading" secondItem="o1s-JW-Gdd" secondAttribute="leading" id="jsW-l1-o6T"/>
+                            <constraint firstItem="hCe-k5-XuS" firstAttribute="trailing" secondItem="Um0-XA-dKz" secondAttribute="trailing" id="m0j-a7-6MA"/>
+                            <constraint firstItem="hCe-k5-XuS" firstAttribute="leading" secondItem="Um0-XA-dKz" secondAttribute="leading" id="ndK-hV-QHt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Um0-XA-dKz"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="F3n-gu-Ynl" id="Cfp-Yh-TIM"/>
+                        <outlet property="labelsTableView" destination="hCe-k5-XuS" id="dqH-2F-DQP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmA-bi-lf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4064" y="108"/>
+            <point key="canvasLocation" x="4063" y="107"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ub3-fA-J2f">
