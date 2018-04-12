@@ -22,6 +22,9 @@ class DataService {
     private var currentDataset: Dataset!
     static let instance = DataService()
     
+    // Private init
+    private init() {}
+    
     func currentDataset(completion: (Dataset) -> ()) {
         if let currentDataset = currentDataset {
             completion(currentDataset)
@@ -122,6 +125,19 @@ class DataService {
         })
     }
     
+    // Add image item to the current dataset
+    func addLabel(to dataset: Dataset, with name: String) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let dataLabel = DataLabel(context: managedContext)
+        dataLabel.dataset = dataset
+        dataLabel.name = name
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Can't save label \(error)")
+        }
+    }
+    
     private func saveToFile(data: Data, name: String) throws {
         let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let url = docDir.appendingPathComponent(name)
@@ -167,4 +183,24 @@ class DataService {
             debugPrint("Could not delete object \(error.localizedDescription)")
         }
     }
+
+    // Get list of items for the given dataset
+    func datasetLabels(from dataset: Dataset) -> [DataLabel]{
+        if let labels = dataset.labels?.allObjects as? [DataLabel] {
+            return labels
+        }
+        return []
+    }
+    
+    // Delete label
+    func delete(label dataLabel: DataLabel) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(dataLabel)
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not delete object \(error.localizedDescription)")
+        }
+    }
+    
 }

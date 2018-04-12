@@ -391,7 +391,11 @@
                                     <barButtonItem systemItem="flexibleSpace" id="ksD-hc-5w1"/>
                                     <barButtonItem enabled="NO" title="Current Dataset" id="WMl-pT-zN4"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="l6r-qY-GsF"/>
-                                    <barButtonItem systemItem="add" id="Yc7-jj-cGf"/>
+                                    <barButtonItem systemItem="add" id="Yc7-jj-cGf">
+                                        <connections>
+                                            <action selector="onAddTapped:" destination="ei3-dJ-8yp" id="yeB-bf-2ZY"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IIm-G0-FB0">

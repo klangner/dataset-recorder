@@ -10,12 +10,15 @@ import UIKit
 
 class LabelsVC: UIViewController {
     
-    let labels = ["red", "blue", "green", "yellow"]
+    var dataset: Dataset!
 
     @IBOutlet weak var labelTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataService.instance.currentDataset { (dataset) in
+            self.dataset = dataset
+        }
         labelTableView.dataSource = self
         labelTableView.delegate = self
     }
@@ -24,6 +27,31 @@ class LabelsVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func onAddTapped(_ sender: Any) {
+        editName(name: "", updateHandler: {(name) in
+            DataService.instance.addLabel(to: self.dataset, with: name)
+            self.labelTableView.reloadData()
+        })
+    }
+
+    // Show alert which will allow to edit cell text
+    // Return true if name should be changed
+    func editName(name: String, updateHandler: @escaping (String) -> ()) {
+        let alert = UIAlertController(title: "", message: "Label name", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.text = name
+        })
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (updateAction) in
+            let name = alert.textFields!.first!.text!
+            if !name.isEmpty {
+                updateHandler(name)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: false)
+    }
+    
 }
 
 
@@ -31,14 +59,18 @@ extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
     
     // Number of items in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labels.count
+        if let labels = dataset?.labels {
+            return labels.count
+        } else {
+            return 0
+        }
     }
     
     // Show item
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.cellForRow(at: indexPath) else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        cell.textLabel?.text = labels[indexPath.row]
+        let labels = DataService.instance.datasetLabels(from: dataset)
+        cell.textLabel?.text = labels[indexPath.row].name
         return cell
     }
     
@@ -50,25 +82,24 @@ extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
         })
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-//            DataService.instance.removeDataset(dataset: self.datasetNames[indexPath.row], completion: { (deleted) in
-//                if deleted {
-//                    self.loadDatasets()
-//                }
-//            })
+            let labels = DataService.instance.datasetLabels(from: self.dataset)
+            let dataLabel = labels[indexPath.row]
+            DataService.instance.delete(label: dataLabel)
+            self.labelTableView.reloadData()
         })
-        if labels.count > 1 { return [deleteAction, editAction] }
-        else { return [editAction] }
+        return [deleteAction, editAction]
     }
     
     // Show alert which will allow to edit label
     func editLabel(at indexPath: IndexPath) {
-//        let dataset = datasetNames[indexPath.row]
-//        editName(name: dataset.name!, updateHandler: {(newName) in
-//            dataset.name = newName
-//            DataService.instance.save()
-//            self.loadDatasets()
-//            self.datasetsTableView.reloadRows(at: [indexPath], with: .fade)
-//        })
+        let labels = DataService.instance.datasetLabels(from: dataset)
+        let dataLabel = labels[indexPath.row]
+        editName(name: dataLabel.name!, updateHandler: {(newName) in
+            dataLabel.name = newName
+            DataService.instance.save()
+            self.labelTableView.reloadRows(at: [indexPath], with: .fade)
+        })
     }
+    
 }
 
