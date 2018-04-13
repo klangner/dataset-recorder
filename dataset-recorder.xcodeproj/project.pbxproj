@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1E51D1C6207E6971005CEAE8 /* LabelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1C5207E6971005CEAE8 /* LabelsVC.swift */; };
+		1E51D1D620811C80005CEAE8 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1D520811C80005CEAE8 /* DataServiceTests.swift */; };
+		1E51D1D820811E71005CEAE8 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1D720811E71005CEAE8 /* ExtensionTests.swift */; };
 		1ECF39422066437A00C4E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF39412066437A00C4E8E5 /* AppDelegate.swift */; };
 		1ECF394F2066437A00C4E8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ECF394D2066437A00C4E8E5 /* LaunchScreen.storyboard */; };
 		1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF3957206643D500C4E8E5 /* DataService.swift */; };
@@ -25,8 +27,22 @@
 		D0A010FE616041A6C6325839 /* Pods_dataset_recorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4152AAD942B6E3CE2D688 /* Pods_dataset_recorder.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1E51D1D020811B57005CEAE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1ECF39362066437A00C4E8E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1ECF393D2066437A00C4E8E5;
+			remoteInfo = "dataset-recorder";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1E51D1C5207E6971005CEAE8 /* LabelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsVC.swift; sourceTree = "<group>"; };
+		1E51D1CB20811B57005CEAE8 /* dataset-recorder-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dataset-recorder-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E51D1CF20811B57005CEAE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E51D1D520811C80005CEAE8 /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
+		1E51D1D720811E71005CEAE8 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		1ECF393E2066437A00C4E8E5 /* dataset-recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dataset-recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ECF39412066437A00C4E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ECF394E2066437A00C4E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +66,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1E51D1C820811B57005CEAE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1ECF393B2066437A00C4E8E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,10 +84,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E51D1CC20811B57005CEAE8 /* dataset-recorder-tests */ = {
+			isa = PBXGroup;
+			children = (
+				1E51D1CF20811B57005CEAE8 /* Info.plist */,
+				1E51D1D520811C80005CEAE8 /* DataServiceTests.swift */,
+				1E51D1D720811E71005CEAE8 /* ExtensionTests.swift */,
+			);
+			path = "dataset-recorder-tests";
+			sourceTree = "<group>";
+		};
 		1ECF39352066437A00C4E8E5 = {
 			isa = PBXGroup;
 			children = (
 				1ECF39402066437A00C4E8E5 /* dataset-recorder */,
+				1E51D1CC20811B57005CEAE8 /* dataset-recorder-tests */,
 				1ECF393F2066437A00C4E8E5 /* Products */,
 				9F433ABB9411B25E4AE30960 /* Pods */,
 				4BAC00F4D36D1697F8DE11ED /* Frameworks */,
@@ -75,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				1ECF393E2066437A00C4E8E5 /* dataset-recorder.app */,
+				1E51D1CB20811B57005CEAE8 /* dataset-recorder-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +206,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1E51D1CA20811B57005CEAE8 /* dataset-recorder-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E51D1D220811B57005CEAE8 /* Build configuration list for PBXNativeTarget "dataset-recorder-tests" */;
+			buildPhases = (
+				1E51D1C720811B57005CEAE8 /* Sources */,
+				1E51D1C820811B57005CEAE8 /* Frameworks */,
+				1E51D1C920811B57005CEAE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E51D1D120811B57005CEAE8 /* PBXTargetDependency */,
+			);
+			name = "dataset-recorder-tests";
+			productName = "dataset-recorder-tests";
+			productReference = 1E51D1CB20811B57005CEAE8 /* dataset-recorder-tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1ECF393D2066437A00C4E8E5 /* dataset-recorder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1ECF39532066437A00C4E8E5 /* Build configuration list for PBXNativeTarget "dataset-recorder" */;
@@ -197,10 +250,15 @@
 		1ECF39362066437A00C4E8E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Krzysztof Langner";
 				TargetAttributes = {
+					1E51D1CA20811B57005CEAE8 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1ECF393D2066437A00C4E8E5;
+					};
 					1ECF393D2066437A00C4E8E5 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -226,11 +284,19 @@
 			projectRoot = "";
 			targets = (
 				1ECF393D2066437A00C4E8E5 /* dataset-recorder */,
+				1E51D1CA20811B57005CEAE8 /* dataset-recorder-tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E51D1C920811B57005CEAE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1ECF393C2066437A00C4E8E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -303,6 +369,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E51D1C720811B57005CEAE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E51D1D620811C80005CEAE8 /* DataServiceTests.swift in Sources */,
+				1E51D1D820811E71005CEAE8 /* ExtensionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1ECF393A2066437A00C4E8E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +398,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1E51D1D120811B57005CEAE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1ECF393D2066437A00C4E8E5 /* dataset-recorder */;
+			targetProxy = 1E51D1D020811B57005CEAE8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		1ECF394D2066437A00C4E8E5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -335,6 +418,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1E51D1D320811B57005CEAE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R2P772U892;
+				INFOPLIST_FILE = "dataset-recorder-tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.foklid.dataset-recorder-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dataset-recorder.app/dataset-recorder";
+			};
+			name = Debug;
+		};
+		1E51D1D420811B57005CEAE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R2P772U892;
+				INFOPLIST_FILE = "dataset-recorder-tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.foklid.dataset-recorder-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dataset-recorder.app/dataset-recorder";
+			};
+			name = Release;
+		};
 		1ECF39512066437A00C4E8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -487,6 +606,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E51D1D220811B57005CEAE8 /* Build configuration list for PBXNativeTarget "dataset-recorder-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E51D1D320811B57005CEAE8 /* Debug */,
+				1E51D1D420811B57005CEAE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1ECF39392066437A00C4E8E5 /* Build configuration list for PBXProject "dataset-recorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
