@@ -25,7 +25,8 @@ class DataService {
     // Private init
     private init() {}
     
-    func currentDataset(completion: (Dataset) -> ()) {
+    // Get recently used dataset
+    func recentDataset(completion: (Dataset) -> ()) {
         if let currentDataset = currentDataset {
             completion(currentDataset)
         } else {
@@ -68,15 +69,13 @@ class DataService {
     }
     
     // Remove dataset if it is empty
-    func removeDataset(dataset: Dataset, completion: (Bool) -> ()) {
+    func remove(dataset: Dataset) {
         let managedContext = appDelegate.persistentContainer.viewContext
         managedContext.delete(dataset)
         do {
             try managedContext.save()
-            completion(true)
         } catch {
             debugPrint("Could not delete object \(error.localizedDescription)")
-            completion(false)
         }
     }
     
@@ -106,7 +105,7 @@ class DataService {
     // Add image item to the current dataset
     func addImage(image: UIImage, withLabel label: String) {
         guard let data = UIImageJPEGRepresentation(image, 1.0) else { return }
-        currentDataset(completion: { (dataset) in
+        recentDataset(completion: { (dataset) in
             let managedContext = appDelegate.persistentContainer.viewContext
             let item = DataItem(context: managedContext)
             let now = Date()

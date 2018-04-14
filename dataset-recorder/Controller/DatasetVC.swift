@@ -25,7 +25,7 @@ class DatasetVC: UIViewController {
         super.viewDidAppear(animated)
         dataCollectionView.delegate = self
         dataCollectionView.dataSource = self
-        DataService.instance.currentDataset(completion: {(dataset) in
+        DataService.instance.recentDataset(completion: {(dataset) in
             currentDatasetLabel.title = dataset.name
             loadData(from: dataset)
         })
@@ -71,7 +71,7 @@ class DatasetVC: UIViewController {
         FileManager.default.clearTmpDirectory()
         if completed {
             DataService.instance.deleteItems(items: dataItems)
-            DataService.instance.currentDataset(completion: { (dataset) in
+            DataService.instance.recentDataset(completion: { (dataset) in
                 loadData(from: dataset)
             })
         }

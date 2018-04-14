@@ -104,11 +104,8 @@ extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
         })
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-            DataService.instance.removeDataset(dataset: self.datasetNames[indexPath.row], completion: { (deleted) in
-                if deleted {
-                    self.loadDatasets()
-                }
-            })
+            DataService.instance.remove(dataset: self.datasetNames[indexPath.row])
+            self.loadDatasets()
         })
         
         if datasetNames.count > 1 { return [deleteAction, editAction] }

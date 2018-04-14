@@ -12,6 +12,8 @@ import XCTest
 
 class DataServiceTests: XCTestCase {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,10 +24,30 @@ class DataServiceTests: XCTestCase {
         super.tearDown()
     }
 
+    // Helper function which removes all datasets
+    private func removeAllDatasets(completion: () -> ()) {
+        DataService.instance.fetchDatasets { (datasets) in
+            for dataset in datasets {
+                DataService.instance.remove(dataset: dataset)
+            }
+            completion()
+        }
+    }
+
     // Even if the list of datasets is empty we should get recent default recent dataset
     func testNoDatasets() {
-        // Dataset list is empty
+        let datasetRemovedExpectation = XCTestExpectation(description: "Remove all datasets")
+        removeAllDatasets {
+            datasetRemovedExpectation.fulfill()
+        }
+        wait(for: [datasetRemovedExpectation], timeout: 10.0)
+        
         // Get recent dataset
+        let recentDatasetExpectation = XCTestExpectation(description: "We should get recent dataset")
+        DataService.instance.recentDataset { (dataset) in
+            recentDatasetExpectation.fulfill()
+        }
+        wait(for: [recentDatasetExpectation], timeout: 10.0)
     }
     
     // New added dataset should be returned as recent Dataset
@@ -33,5 +55,5 @@ class DataServiceTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    
+
 }
