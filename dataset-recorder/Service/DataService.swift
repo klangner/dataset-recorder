@@ -19,7 +19,6 @@ class DataService {
     let previewSize = CGSize(width: 256, height: 512)
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private var currentDataset: Dataset!
     static let instance = DataService()
     
     // Private init
@@ -27,25 +26,19 @@ class DataService {
     
     // Get recently used dataset
     func recentDataset(completion: (Dataset) -> ()) {
-        if let currentDataset = currentDataset {
-            completion(currentDataset)
-        } else {
-            fetchDatasets(completion: {(datasets) in
-                if datasets.count > 0 {
-                    currentDataset = datasets[0]
-                } else {
-                    currentDataset = addDataset(withName: "My Dataset")
-                }
-                completion(currentDataset)
-            })
-        }
+        fetchDatasets(completion: {(datasets) in
+            if datasets.count > 0 {
+                completion(datasets[0])
+            } else {
+                completion(addDataset(withName: "My Dataset"))
+            }
+        })
     }
 
     // Set the dataset as current and change lastUsed date
     func setCurrentDataset(dataset: Dataset) {
         let managedContext = appDelegate.persistentContainer.viewContext
         dataset.lastUsed = Date()
-        currentDataset = dataset
         do {
             dataset.type = DatasetType.image.rawValue
             try managedContext.save()

@@ -14,6 +14,7 @@ class DatasetVC: UIViewController {
     @IBOutlet weak var dataCollectionView: UICollectionView!
 
     // Cache for dataset items
+    var dataset: Dataset!
     var dataItems: [DataItem] = []
     
     
@@ -26,6 +27,7 @@ class DatasetVC: UIViewController {
         dataCollectionView.delegate = self
         dataCollectionView.dataSource = self
         DataService.instance.recentDataset(completion: {(dataset) in
+            self.dataset = dataset
             currentDatasetLabel.title = dataset.name
             loadData(from: dataset)
         })
@@ -33,8 +35,10 @@ class DatasetVC: UIViewController {
 
     // Switch to the view which will take new picture
     @IBAction func takePictureTapped(_ sender: Any) {
-        let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId")
-        present(cameraVC, animated: false, completion: nil)
+        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
+            cameraVC.dataset = dataset
+            present(cameraVC, animated: false, completion: nil)
+        }
     }
     
     @IBAction func shareTapped(_ sender: Any) {

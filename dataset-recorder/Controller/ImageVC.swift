@@ -18,9 +18,6 @@ class ImageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataService.instance.recentDataset { (dataset) in
-            self.dataset = dataset
-        }
         imageView.image = image
         labelsTableView.dataSource = self
         labelsTableView.delegate = self
