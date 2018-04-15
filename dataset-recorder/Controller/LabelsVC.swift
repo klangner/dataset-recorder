@@ -30,7 +30,7 @@ class LabelsVC: UIViewController {
     
     @IBAction func onAddTapped(_ sender: Any) {
         editName(name: "", updateHandler: {(name) in
-            DataService.instance.addLabel(to: self.dataset, with: name)
+            _ = self.dataset.newLabel(name: name)
             self.labelTableView.reloadData()
         })
     }
@@ -84,7 +84,7 @@ extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
             let labels = self.dataset.getLabels()
             let dataLabel = labels[indexPath.row]
-            DataService.instance.delete(label: dataLabel)
+            self.dataset.delete(label: dataLabel)
             self.labelTableView.reloadData()
         })
         return [deleteAction, editAction]

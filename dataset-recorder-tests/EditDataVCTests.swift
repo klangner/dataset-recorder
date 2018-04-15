@@ -19,7 +19,7 @@ class EditDataVCTests: XCTestCase {
         super.setUp()
         DataService.instance.recentDataset { (dataset) in
             let image = UIImage(named: "labels-icon")!
-            dataItem = dataset.add(image: image, withLabel: "test1")
+            dataItem = dataset.newImageItem(image: image, withLabel: "test1")
             editDataVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editDataVC") as! EditDataVC
             editDataVC.dataItem = dataItem
             editDataVC.loadViewIfNeeded()
@@ -29,7 +29,7 @@ class EditDataVCTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        DataService.instance.deleteItem(item: dataItem)
+        dataItem.dataset!.delete(item: dataItem)
     }
 
     // Check outlets

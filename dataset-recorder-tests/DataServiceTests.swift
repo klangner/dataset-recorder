@@ -33,6 +33,20 @@ class DataServiceTests: XCTestCase {
             completion()
         }
     }
+    
+    // Count number of files in document directory
+    private func countDocumentFiles() -> Int {
+        do {
+            let fileManager = FileManager.default
+            let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let files = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+            return files.count
+        } catch {
+            XCTFail("Exception error")
+            return 0
+        }
+    }
+
 
     // Even if the list of datasets is empty we should get recent default recent dataset
     func testNoDatasets() {
@@ -77,8 +91,40 @@ class DataServiceTests: XCTestCase {
     // Get labels
     func testDatasetLabels() {
         let dataset = DataService.instance.addDataset(withName: "Test 1")
-        DataService.instance.addLabel(to: dataset, with: "Label 1")
+        let _ = dataset.newLabel(name: "Label 1")
         XCTAssertEqual(dataset.getLabels().count, 1)
+    }
+    
+    // Test add remove label
+    func testAddRemoveLabels() {
+        let dataset = DataService.instance.addDataset(withName: "Test 1")
+        let labelCount = dataset.getLabels().count
+        let label = dataset.newLabel(name: "test1")!
+        XCTAssertEqual(dataset.getLabels().count, labelCount+1)
+        dataset.delete(label: label)
+        XCTAssertEqual(dataset.getLabels().count, labelCount)
+    }
+    
+    // Test items management
+    func testAddRemoveItems() {
+        let dataset = DataService.instance.addDataset(withName: "Test 1")
+        let itemCount = dataset.getItems().count
+        let image = UIImage(named: "labels-icon")!
+        let dataItem = dataset.newImageItem(image: image, withLabel: "test1")!
+        XCTAssertEqual(dataset.getItems().count, itemCount+1)
+        dataset.delete(item: dataItem)
+        XCTAssertEqual(dataset.getItems().count, itemCount)
+    }
+
+    // When DataItem is removed its file should also be removed.
+    func testRemoveItemFile() {
+        let dataset = DataService.instance.addDataset(withName: "Test 1")
+        let countFiles = countDocumentFiles()
+        let image = UIImage(named: "labels-icon")!
+        let dataItem = dataset.newImageItem(image: image, withLabel: "test1")!
+        XCTAssertEqual(countDocumentFiles(), countFiles+1)
+        dataset.delete(item: dataItem)
+        XCTAssertEqual(countDocumentFiles(), countFiles)
     }
     
 }

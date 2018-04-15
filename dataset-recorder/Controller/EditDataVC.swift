@@ -43,7 +43,7 @@ class EditDataVC: UIViewController {
     @IBAction func onDelete(_ sender: Any) {
         let alert = UIAlertController(title: "Delete Image", message: "Are you sure?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (updateAction) in
-            DataService.instance.deleteItem(item: self.dataItem)
+            self.dataItem.dataset!.delete(item: self.dataItem)
             self.moveBack()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

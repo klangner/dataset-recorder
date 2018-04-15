@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 extension Dataset {
@@ -26,11 +27,37 @@ extension Dataset {
         return []
     }
     
-    // Add image item to the current dataset
-    func add(image: UIImage, withLabel label: String) -> DataItem? {
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else { return nil }
+    // Add label to the dataset
+    func newLabel(name: String) -> DataLabel? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
+        let dataLabel = DataLabel(context: managedContext)
+        dataLabel.dataset = self
+        dataLabel.name = name
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Can't save label \(error)")
+            return nil
+        }
+        return dataLabel
+    }
+    
+    // Delete label
+    func delete(label dataLabel: DataLabel) {
+        let managedContext = DataService.instance.context()
+        managedContext.delete(dataLabel)
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not delete object \(error.localizedDescription)")
+        }
+    }
+    
+    // Add image item to the current dataset
+    func newImageItem(image: UIImage, withLabel label: String) -> DataItem? {
+        guard let data = UIImageJPEGRepresentation(image, 1.0) else { return nil }
+        let managedContext = DataService.instance.context()
         let item = DataItem(context: managedContext)
         let now = Date()
         let fileName = "image_\(now.isoFormat()).jpg"
@@ -47,6 +74,44 @@ extension Dataset {
             return nil
         }
         return item
+    }
+    
+    // Get list of items for the given dataset
+    func getItems() -> [DataItem]{
+        if let items = self.items?.allObjects as? [DataItem] {
+            return items
+        }
+        return []
+    }
+    
+    // Delete data item
+    func delete(item: DataItem) {
+        let managedContext = DataService.instance.context()
+        managedContext.delete(item)
+        do {
+            let docDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let url = docDir.appendingPathComponent(item.fileName!)
+            try FileManager.default.removeItem(at: url)
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not delete object \(error.localizedDescription)")
+        }
+    }
+    
+    // Delete multiple data items
+    func delete(items: [DataItem]) {
+        let managedContext = DataService.instance.context()
+        do {
+            let docDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            for item in items {
+                let url = docDir.appendingPathComponent(item.fileName!)
+                managedContext.delete(item)
+                try FileManager.default.removeItem(at: url)
+            }
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not delete object \(error.localizedDescription)")
+        }
     }
 
     // Save data to the file in the document directory

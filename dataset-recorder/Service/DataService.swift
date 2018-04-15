@@ -24,6 +24,10 @@ class DataService {
     // Private init
     private init() {}
     
+    func context() -> NSManagedObjectContext {
+        return appDelegate.persistentContainer.viewContext
+    }
+    
     // Get recently used dataset
     func recentDataset(completion: (Dataset) -> ()) {
         fetchDatasets(completion: {(datasets) in
@@ -75,27 +79,6 @@ class DataService {
         return dataset
     }
     
-    // Get list of items for the given dataset
-    func datasetItems(from dataset: Dataset) -> [DataItem]{
-        if let items = dataset.items?.allObjects as? [DataItem] {
-            return items
-        }
-        return []
-    }
-
-    // Add image item to the current dataset
-    func addLabel(to dataset: Dataset, with name: String) {
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let dataLabel = DataLabel(context: managedContext)
-        dataLabel.dataset = dataset
-        dataLabel.name = name
-        do {
-            try managedContext.save()
-        } catch {
-            debugPrint("Can't save label \(error)")
-        }
-    }
-    
     // Save all modifications
     func save() {
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -105,46 +88,4 @@ class DataService {
             debugPrint("Can't save image")
         }
     }
-    
-    // Delete data item
-    func deleteItem(item: DataItem) {
-        let managedContext = appDelegate.persistentContainer.viewContext
-        managedContext.delete(item)
-        do {
-            let docDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let url = docDir.appendingPathComponent(item.fileName!)
-            try FileManager.default.removeItem(at: url)
-            try managedContext.save()
-        } catch {
-            debugPrint("Could not delete object \(error.localizedDescription)")
-        }
-    }
-
-    // Delete multiple data items
-    func deleteItems(items: [DataItem]) {
-        let managedContext = appDelegate.persistentContainer.viewContext
-        do {
-            let docDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            for item in items {
-                let url = docDir.appendingPathComponent(item.fileName!)
-                managedContext.delete(item)
-                try FileManager.default.removeItem(at: url)
-            }
-            try managedContext.save()
-        } catch {
-            debugPrint("Could not delete object \(error.localizedDescription)")
-        }
-    }
-
-    // Delete label
-    func delete(label dataLabel: DataLabel) {
-        let managedContext = appDelegate.persistentContainer.viewContext
-        managedContext.delete(dataLabel)
-        do {
-            try managedContext.save()
-        } catch {
-            debugPrint("Could not delete object \(error.localizedDescription)")
-        }
-    }
-    
 }

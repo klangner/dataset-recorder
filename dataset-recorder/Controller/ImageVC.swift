@@ -54,7 +54,7 @@ extension ImageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let labels = dataset.getLabels()
         let dataLabel = labels[indexPath.row]
-        _ = dataset.add(image: self.image!, withLabel: dataLabel.name!)
+        _ = dataset.newImageItem(image: self.image!, withLabel: dataLabel.name!)
         self.moveToCameraVC()
     }
 }

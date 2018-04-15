@@ -74,7 +74,7 @@ class DatasetVC: UIViewController {
     func dataSharedHandler(_ activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) {
         FileManager.default.clearTmpDirectory()
         if completed {
-            DataService.instance.deleteItems(items: dataItems)
+            dataset.delete(items: dataItems)
             DataService.instance.recentDataset(completion: { (dataset) in
                 loadData(from: dataset)
             })
@@ -89,7 +89,7 @@ class DatasetVC: UIViewController {
     
     // Load dataset items
     func loadData(from dataset: Dataset) {
-        dataItems = DataService.instance.datasetItems(from: dataset)
+        dataItems = dataset.getItems()
         dataCollectionView.reloadData()
     }
 }
