@@ -13,11 +13,13 @@ class LabelsVC: UIViewController {
     var dataset: Dataset!
 
     @IBOutlet weak var labelTableView: UITableView!
+    @IBOutlet weak var datasetNameLabel: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         DataService.instance.recentDataset { (dataset) in
             self.dataset = dataset
+            datasetNameLabel.title = dataset.name
         }
         labelTableView.dataSource = self
         labelTableView.delegate = self
@@ -97,7 +99,7 @@ extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
         editName(name: dataLabel.name!, updateHandler: {(newName) in
             dataLabel.name = newName
             DataService.instance.save()
-            self.labelTableView.reloadRows(at: [indexPath], with: .fade)
+            self.labelTableView.reloadData()
         })
     }
     

@@ -22,7 +22,7 @@ extension Dataset {
     // Get list of items for the given dataset
     func getLabels() -> [DataLabel] {
         if let labels = self.labels?.allObjects as? [DataLabel] {
-            return labels
+            return labels.sorted(by: { $0.name! < $1.name! })
         }
         return []
     }

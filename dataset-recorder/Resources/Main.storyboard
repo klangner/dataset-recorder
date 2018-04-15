@@ -411,7 +411,9 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem systemItem="flexibleSpace" id="ksD-hc-5w1"/>
-                                    <barButtonItem enabled="NO" title="Current Dataset" id="WMl-pT-zN4"/>
+                                    <barButtonItem title="Current Dataset" id="WMl-pT-zN4">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="l6r-qY-GsF"/>
                                     <barButtonItem systemItem="add" id="Yc7-jj-cGf">
                                         <connections>
@@ -450,6 +452,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Labels" image="labels-icon" selectedImage="labels-icon" id="xQL-Ev-tFm"/>
                     <connections>
+                        <outlet property="datasetNameLabel" destination="WMl-pT-zN4" id="lxq-Oe-YYR"/>
                         <outlet property="labelTableView" destination="IIm-G0-FB0" id="06A-tc-Ox3"/>
                     </connections>
                 </viewController>

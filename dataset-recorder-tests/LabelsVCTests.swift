@@ -23,5 +23,11 @@ class LabelsVCTests: XCTestCase {
     // Check outlets
     func testOutlets() {
         XCTAssertNotNil(labelsVC.labelTableView)
+        XCTAssertNotNil(labelsVC.datasetNameLabel)
+    }
+    
+    // Set dataset name label
+    func testShowDatasetName() {
+        XCTAssertEqual(labelsVC.dataset.name, labelsVC.datasetNameLabel.title)
     }
 }
