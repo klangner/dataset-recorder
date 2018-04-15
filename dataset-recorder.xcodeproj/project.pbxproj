@@ -10,6 +10,13 @@
 		1E51D1C6207E6971005CEAE8 /* LabelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1C5207E6971005CEAE8 /* LabelsVC.swift */; };
 		1E51D1D620811C80005CEAE8 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1D520811C80005CEAE8 /* DataServiceTests.swift */; };
 		1E51D1D820811E71005CEAE8 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1D720811E71005CEAE8 /* ExtensionTests.swift */; };
+		1E51D1DB2081FF3F005CEAE8 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1DA2081FF3F005CEAE8 /* Dataset.swift */; };
+		1E51D1DD2082A015005CEAE8 /* DatasetVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1DC2082A015005CEAE8 /* DatasetVCTests.swift */; };
+		1E51D1DF2082A4E4005CEAE8 /* SelectDatasetVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51D1DE2082A4E4005CEAE8 /* SelectDatasetVCTests.swift */; };
+		1E9F87362082A90A001A067C /* CameraVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F87352082A90A001A067C /* CameraVCTests.swift */; };
+		1E9F87382083392D001A067C /* ImageVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F87372083392D001A067C /* ImageVCTests.swift */; };
+		1E9F873A20833E6D001A067C /* EditDataVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F873920833E6D001A067C /* EditDataVCTests.swift */; };
+		1E9F873C20834569001A067C /* LabelsVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F873B20834569001A067C /* LabelsVCTests.swift */; };
 		1ECF39422066437A00C4E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF39412066437A00C4E8E5 /* AppDelegate.swift */; };
 		1ECF394F2066437A00C4E8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ECF394D2066437A00C4E8E5 /* LaunchScreen.storyboard */; };
 		1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF3957206643D500C4E8E5 /* DataService.swift */; };
@@ -43,6 +50,13 @@
 		1E51D1CF20811B57005CEAE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E51D1D520811C80005CEAE8 /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		1E51D1D720811E71005CEAE8 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
+		1E51D1DA2081FF3F005CEAE8 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
+		1E51D1DC2082A015005CEAE8 /* DatasetVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetVCTests.swift; sourceTree = "<group>"; };
+		1E51D1DE2082A4E4005CEAE8 /* SelectDatasetVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatasetVCTests.swift; sourceTree = "<group>"; };
+		1E9F87352082A90A001A067C /* CameraVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVCTests.swift; sourceTree = "<group>"; };
+		1E9F87372083392D001A067C /* ImageVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVCTests.swift; sourceTree = "<group>"; };
+		1E9F873920833E6D001A067C /* EditDataVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataVCTests.swift; sourceTree = "<group>"; };
+		1E9F873B20834569001A067C /* LabelsVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsVCTests.swift; sourceTree = "<group>"; };
 		1ECF393E2066437A00C4E8E5 /* dataset-recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dataset-recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ECF39412066437A00C4E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ECF394E2066437A00C4E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,8 +104,22 @@
 				1E51D1CF20811B57005CEAE8 /* Info.plist */,
 				1E51D1D520811C80005CEAE8 /* DataServiceTests.swift */,
 				1E51D1D720811E71005CEAE8 /* ExtensionTests.swift */,
+				1E51D1DC2082A015005CEAE8 /* DatasetVCTests.swift */,
+				1E51D1DE2082A4E4005CEAE8 /* SelectDatasetVCTests.swift */,
+				1E9F87352082A90A001A067C /* CameraVCTests.swift */,
+				1E9F87372083392D001A067C /* ImageVCTests.swift */,
+				1E9F873920833E6D001A067C /* EditDataVCTests.swift */,
+				1E9F873B20834569001A067C /* LabelsVCTests.swift */,
 			);
 			path = "dataset-recorder-tests";
+			sourceTree = "<group>";
+		};
+		1E51D1D92081FF24005CEAE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E51D1DA2081FF3F005CEAE8 /* Dataset.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1ECF39352066437A00C4E8E5 = {
@@ -118,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				1ECF3956206643D500C4E8E5 /* Service */,
+				1E51D1D92081FF24005CEAE8 /* Model */,
 				1ECF39592066440400C4E8E5 /* Controller */,
 				1ECF395D2066440400C4E8E5 /* View */,
 				1ECF395C2066440400C4E8E5 /* Extension */,
@@ -373,8 +402,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E51D1DD2082A015005CEAE8 /* DatasetVCTests.swift in Sources */,
+				1E9F873A20833E6D001A067C /* EditDataVCTests.swift in Sources */,
 				1E51D1D620811C80005CEAE8 /* DataServiceTests.swift in Sources */,
+				1E9F87382083392D001A067C /* ImageVCTests.swift in Sources */,
 				1E51D1D820811E71005CEAE8 /* ExtensionTests.swift in Sources */,
+				1E9F873C20834569001A067C /* LabelsVCTests.swift in Sources */,
+				1E51D1DF2082A4E4005CEAE8 /* SelectDatasetVCTests.swift in Sources */,
+				1E9F87362082A90A001A067C /* CameraVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +423,7 @@
 				1ECF395E2066440500C4E8E5 /* DatasetVC.swift in Sources */,
 				1EEEAAEC206FCE2300D06BFD /* EditDataVC.swift in Sources */,
 				1EEEAAF32076146F00D06BFD /* Extensions.swift in Sources */,
+				1E51D1DB2081FF3F005CEAE8 /* Dataset.swift in Sources */,
 				1ECF3958206643D500C4E8E5 /* DataService.swift in Sources */,
 				1ECF395F2066440500C4E8E5 /* SelectDatasetVC.swift in Sources */,
 				1EEEAAEA206FB52100D06BFD /* DataItemCell.swift in Sources */,

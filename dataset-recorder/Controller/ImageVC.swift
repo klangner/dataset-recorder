@@ -45,16 +45,16 @@ extension ImageVC: UITableViewDelegate, UITableViewDataSource {
     // Show item
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditLabelCell", for: indexPath)
-        let labels = DataService.instance.datasetLabels(from: dataset)
+        let labels = dataset.getLabels()
         cell.textLabel?.text = labels[indexPath.row].name
         return cell
     }
     
     // After row is selected we want to save image and go back to camera view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let labels = DataService.instance.datasetLabels(from: dataset)
+        let labels = dataset.getLabels()
         let dataLabel = labels[indexPath.row]
-        DataService.instance.addImage(image: self.image!, withLabel: dataLabel.name!)
+        _ = dataset.add(image: self.image!, withLabel: dataLabel.name!)
         self.moveToCameraVC()
     }
 }

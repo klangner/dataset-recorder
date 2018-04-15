@@ -35,18 +35,6 @@ class DataService {
         })
     }
 
-    // Set the dataset as current and change lastUsed date
-    func setCurrentDataset(dataset: Dataset) {
-        let managedContext = appDelegate.persistentContainer.viewContext
-        dataset.lastUsed = Date()
-        do {
-            dataset.type = DatasetType.image.rawValue
-            try managedContext.save()
-        } catch {
-            debugPrint("Could not save \(error.localizedDescription)")
-        }
-    }
-    
     // Return all stored datasets
     func fetchDatasets(completion: ([Dataset]) -> ()) {
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -96,28 +84,6 @@ class DataService {
     }
 
     // Add image item to the current dataset
-    func addImage(image: UIImage, withLabel label: String) {
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else { return }
-        recentDataset(completion: { (dataset) in
-            let managedContext = appDelegate.persistentContainer.viewContext
-            let item = DataItem(context: managedContext)
-            let now = Date()
-            let fileName = "image_\(now.isoFormat()).jpg"
-            do {
-                try saveToFile(data: data, name: fileName)
-                item.dataset = dataset
-                item.fileName = fileName
-                item.preview = data
-                item.label = label
-                item.createdAt = now
-                try managedContext.save()
-            } catch {
-                debugPrint("Can't save image \(error)")
-            }
-        })
-    }
-    
-    // Add image item to the current dataset
     func addLabel(to dataset: Dataset, with name: String) {
         let managedContext = appDelegate.persistentContainer.viewContext
         let dataLabel = DataLabel(context: managedContext)
@@ -128,12 +94,6 @@ class DataService {
         } catch {
             debugPrint("Can't save label \(error)")
         }
-    }
-    
-    private func saveToFile(data: Data, name: String) throws {
-        let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let url = docDir.appendingPathComponent(name)
-        try data.write(to: url)
     }
     
     // Save all modifications
@@ -176,14 +136,6 @@ class DataService {
         }
     }
 
-    // Get list of items for the given dataset
-    func datasetLabels(from dataset: Dataset) -> [DataLabel]{
-        if let labels = dataset.labels?.allObjects as? [DataLabel] {
-            return labels
-        }
-        return []
-    }
-    
     // Delete label
     func delete(label dataLabel: DataLabel) {
         let managedContext = appDelegate.persistentContainer.viewContext

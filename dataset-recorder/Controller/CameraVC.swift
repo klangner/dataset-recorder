@@ -87,7 +87,7 @@ class CameraVC: UIViewController {
     
     // Got to ImageVC
     func presentImageEditor(_ image: UIImage) {
-        if let imageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "imageId") as? ImageVC {
+        if let imageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "imageVC") as? ImageVC {
             imageVC.dataset = dataset
             imageVC.image = image
             present(imageVC, animated: false, completion: nil)

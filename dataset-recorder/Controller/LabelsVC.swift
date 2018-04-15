@@ -69,7 +69,7 @@ extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
     // Show item
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        let labels = DataService.instance.datasetLabels(from: dataset)
+        let labels = dataset.getLabels()
         cell.textLabel?.text = labels[indexPath.row].name
         return cell
     }
@@ -82,7 +82,7 @@ extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
         })
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-            let labels = DataService.instance.datasetLabels(from: self.dataset)
+            let labels = self.dataset.getLabels()
             let dataLabel = labels[indexPath.row]
             DataService.instance.delete(label: dataLabel)
             self.labelTableView.reloadData()
@@ -92,7 +92,7 @@ extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
     
     // Show alert which will allow to edit label
     func editLabel(at indexPath: IndexPath) {
-        let labels = DataService.instance.datasetLabels(from: dataset)
+        let labels = dataset.getLabels()
         let dataLabel = labels[indexPath.row]
         editName(name: dataLabel.name!, updateHandler: {(newName) in
             dataLabel.name = newName

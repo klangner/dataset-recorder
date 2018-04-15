@@ -51,9 +51,34 @@ class DataServiceTests: XCTestCase {
     }
     
     // New added dataset should be returned as recent Dataset
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testNewIsRecent() {
+        let dataset = DataService.instance.addDataset(withName: "Test")
+        let expectation = XCTestExpectation(description: "Recent dataset")
+        DataService.instance.recentDataset { (recentDataset) in
+            XCTAssertEqual(dataset, recentDataset)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
     }
 
+    // Touched dataset should be returned as recent
+    func testDatasetTouch() {
+        let dataset1 = DataService.instance.addDataset(withName: "Test 1")
+        let _ = DataService.instance.addDataset(withName: "Test 2")
+        dataset1.touch()
+        let expectation = XCTestExpectation(description: "Recent dataset")
+        DataService.instance.recentDataset { (dataset) in
+            XCTAssertEqual(dataset, dataset1)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    // Get labels
+    func testDatasetLabels() {
+        let dataset = DataService.instance.addDataset(withName: "Test 1")
+        DataService.instance.addLabel(to: dataset, with: "Label 1")
+        XCTAssertEqual(dataset.getLabels().count, 1)
+    }
+    
 }

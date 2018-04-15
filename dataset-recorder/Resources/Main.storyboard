@@ -307,7 +307,7 @@
         <!--ImageVC-->
         <scene sceneID="6Pi-KO-hdi">
             <objects>
-                <viewController storyboardIdentifier="imageId" id="vkd-7C-UQM" customClass="ImageVC" customModule="dataset_recorder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="imageVC" id="vkd-7C-UQM" customClass="ImageVC" customModule="dataset_recorder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o1s-JW-Gdd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,6 +383,7 @@
                 <tabBarController storyboardIdentifier="datasetVC" automaticallyAdjustsScrollViewInsets="NO" id="8aZ-j8-DNf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="284-LS-FSV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -398,7 +399,7 @@
         <!--Labels-->
         <scene sceneID="Z8K-zv-ktW">
             <objects>
-                <viewController storyboardIdentifier="DatasetLabelsId" id="ei3-dJ-8yp" customClass="LabelsVC" customModule="dataset_recorder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="labelsVC" id="ei3-dJ-8yp" customClass="LabelsVC" customModule="dataset_recorder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S0o-kg-X8U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

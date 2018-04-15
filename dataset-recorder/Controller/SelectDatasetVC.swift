@@ -12,6 +12,7 @@ class SelectDatasetVC: UIViewController {
 
 
     @IBOutlet weak var datasetsTableView: UITableView!
+    
     // Cache for dataset names
     var datasetNames = [Dataset]()
     
@@ -42,7 +43,7 @@ class SelectDatasetVC: UIViewController {
     }
     
     func selectDataset(dataset: Dataset) {
-        DataService.instance.setCurrentDataset(dataset: dataset)
+        dataset.touch()
         showDatasetImagesVC()
     }
     
