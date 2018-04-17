@@ -46,6 +46,16 @@ class DatasetVC: UIViewController {
         let urls = dataUrls + [datasetCsv()]
         let activityViewController = UIActivityViewController(activityItems: urls, applicationActivities: nil)
         activityViewController.completionWithItemsHandler = dataSharedHandler
+        activityViewController.excludedActivityTypes = [
+            UIActivityType.airDrop,
+            UIActivityType.postToFacebook,
+            UIActivityType.assignToContact,
+            UIActivityType.copyToPasteboard,
+            UIActivityType.mail,
+            UIActivityType.message,
+            UIActivityType.addToReadingList,
+            UIActivityType.print]
+
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // present the view controller
@@ -54,7 +64,7 @@ class DatasetVC: UIViewController {
     
     // Create file in temp directory with CSV data for current dataset
     func datasetCsv() -> URL {
-        let fileName = "dataset_\(Date().isoFormat()).csv"
+        let fileName = "dataset_\(Date().timeIntervalSince1970).csv"
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         var text = "file,label\n"
         for dataItem in dataItems {

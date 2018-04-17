@@ -59,15 +59,14 @@ extension Dataset {
         guard let data = UIImageJPEGRepresentation(image, 1.0) else { return nil }
         let managedContext = DataService.instance.context()
         let item = DataItem(context: managedContext)
-        let now = Date()
-        let fileName = "image_\(now.isoFormat()).jpg"
+        let fileName = UUID().uuidString.lowercased() + ".jpg"
         do {
             try saveToFile(data: data, name: fileName)
             item.dataset = self
             item.fileName = fileName
             item.preview = data
             item.label = label
-            item.createdAt = now
+            item.createdAt = Date()
             try managedContext.save()
         } catch {
             debugPrint("Can't save image \(error)")
