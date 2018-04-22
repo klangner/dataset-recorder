@@ -8,34 +8,33 @@
 
 import UIKit
 
+struct Option {
+    let title: String!
+    let segueName: String!
+}
+
 class SettingsVC: UIViewController {
 
     var dataset: Dataset!
-    let options = ["Labels"]
+    let options = [Option(title: "Labels", segueName: "labelsSegue")]
     
-    @IBOutlet weak var datasetNameLabel: UIBarButtonItem!
     @IBOutlet weak var settingsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         DataService.instance.recentDataset { (dataset) in
             self.dataset = dataset
-            datasetNameLabel.title = dataset.name
         }
         settingsTableView.dataSource = self
         settingsTableView.delegate = self
     }
 
-    /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let labelsVC = segue.destination as? LabelsVC {
+            labelsVC.dataset = dataset
+        }
     }
-    */
-
 }
 
 extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
@@ -48,20 +47,14 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
     // Show item
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
-        cell.textLabel?.text = options[indexPath.row]
+        cell.textLabel?.text = options[indexPath.row].title
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     // When user taps on an option then show detail view controller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showLabelsVC()
-    }
-    
-    func showLabelsVC() {
-        if let labelsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "labelsVC") as? LabelsVC {
-            labelsVC.dataset = dataset
-            present(labelsVC, animated: true, completion: nil)
-        }
+        performSegue(withIdentifier: options[indexPath.row].segueName, sender: self)
     }
 }
 

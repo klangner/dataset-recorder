@@ -23,11 +23,6 @@ class SettingsVCTests: XCTestCase {
     // Check outlets
     func testOutlets() {
         XCTAssertNotNil(settingsVC.settingsTableView)
-        XCTAssertNotNil(settingsVC.datasetNameLabel)
-    }
-    
-    // Set dataset name label
-    func testShowDatasetName() {
-        XCTAssertEqual(settingsVC.dataset.name, settingsVC.datasetNameLabel.title)
+        XCTAssertNil(settingsVC.navigationItem.rightBarButtonItem)
     }
 }

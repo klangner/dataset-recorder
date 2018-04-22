@@ -13,13 +13,14 @@ class LabelsVC: UIViewController {
     var dataset: Dataset!
 
     @IBOutlet weak var labelTableView: UITableView!
-    @IBOutlet weak var datasetNameLabel: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        datasetNameLabel.title = dataset.name
+        navigationItem.title = "Labels"
         labelTableView.dataSource = self
         labelTableView.delegate = self
+        let addLabelButton = UIBarButtonItem(image: UIImage(named: "plus-icon.jpg"), style: .plain, target: self, action: #selector(onAddTapped))
+        self.navigationItem.rightBarButtonItem = addLabelButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,19 +51,13 @@ class LabelsVC: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: false)
     }
-    
-    @IBAction func onDoneTapped(_ sender: Any) {
-        if let settingsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "settingsVC") as? SettingsVC {
-            settingsVC.dataset = dataset
-            present(settingsVC, animated: true, completion: nil)
-        }
-    }
 }
 
 
 extension LabelsVC : UITableViewDataSource, UITableViewDelegate {
     
     // Number of items in table view
+    // The last item contains button for adding new cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let labels = dataset?.labels {
             return labels.count

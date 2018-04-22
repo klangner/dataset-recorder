@@ -16,7 +16,7 @@ class CameraVCTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as! CameraVC
+        cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraVC") as! CameraVC
         cameraVC.loadViewIfNeeded()
     }
     
