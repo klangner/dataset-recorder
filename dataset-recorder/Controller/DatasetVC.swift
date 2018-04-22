@@ -35,7 +35,7 @@ class DatasetVC: UIViewController {
 
     // Switch to the view which will take new picture
     @IBAction func takePictureTapped(_ sender: Any) {
-        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
+        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraVC") as? CameraVC {
             cameraVC.dataset = dataset
             present(cameraVC, animated: false, completion: nil)
         }
@@ -64,7 +64,7 @@ class DatasetVC: UIViewController {
     
     // Create file in temp directory with CSV data for current dataset
     func datasetCsv() -> URL {
-        let fileName = "dataset_\(Date().timeIntervalSince1970).csv"
+        let fileName = "dataset_\(Int(Date().timeIntervalSince1970)).csv"
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         var text = "file,label\n"
         for dataItem in dataItems {

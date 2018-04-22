@@ -17,7 +17,10 @@ class LabelsVCTests: XCTestCase {
     override func setUp() {
         super.setUp()
         labelsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "labelsVC") as! LabelsVC
-        labelsVC.loadViewIfNeeded()
+        DataService.instance.recentDataset { (dataset) in
+            labelsVC.dataset = dataset
+            labelsVC.loadViewIfNeeded()
+        }
     }
     
     // Check outlets

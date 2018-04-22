@@ -17,10 +17,7 @@ class LabelsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataService.instance.recentDataset { (dataset) in
-            self.dataset = dataset
-            datasetNameLabel.title = dataset.name
-        }
+        datasetNameLabel.title = dataset.name
         labelTableView.dataSource = self
         labelTableView.delegate = self
     }
@@ -54,6 +51,12 @@ class LabelsVC: UIViewController {
         self.present(alert, animated: false)
     }
     
+    @IBAction func onDoneTapped(_ sender: Any) {
+        if let settingsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "settingsVC") as? SettingsVC {
+            settingsVC.dataset = dataset
+            present(settingsVC, animated: true, completion: nil)
+        }
+    }
 }
 
 
