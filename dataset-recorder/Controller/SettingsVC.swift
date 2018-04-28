@@ -9,14 +9,15 @@
 import UIKit
 
 struct Option {
-    let title: String!
-    let segueName: String!
+    let title: String
+    let segueName: String?
 }
 
 class SettingsVC: UIViewController {
 
     var dataset: Dataset!
-    let options = [Option(title: "Labels", segueName: "labelsSegue")]
+    // List of options presented as a settings
+    var options: [Option] = []
     
     @IBOutlet weak var settingsTableView: UITableView!
     
@@ -25,8 +26,16 @@ class SettingsVC: UIViewController {
         DataService.instance.recentDataset { (dataset) in
             self.dataset = dataset
         }
+        options = buildSettingsOptions()
         settingsTableView.dataSource = self
         settingsTableView.delegate = self
+    }
+    
+    private func buildSettingsOptions() -> [Option] {
+        return [Option(title: "Name: \(dataset.name!)", segueName: nil),
+                Option(title: "Labels", segueName: "labelsSegue"),
+                Option(title: "Image size", segueName: nil),
+                Option(title: "Model", segueName: nil)]
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -48,13 +57,17 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
         cell.textLabel?.text = options[indexPath.row].title
-        cell.accessoryType = .disclosureIndicator
+        if options[indexPath.row].segueName != nil {
+            cell.accessoryType = .disclosureIndicator
+        }
         return cell
     }
     
     // When user taps on an option then show detail view controller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: options[indexPath.row].segueName, sender: self)
+        if let segueName = options[indexPath.row].segueName {
+            performSegue(withIdentifier: segueName, sender: self)
+        }
     }
 }
 
