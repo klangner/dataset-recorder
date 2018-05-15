@@ -433,6 +433,7 @@
                     <connections>
                         <outlet property="settingsTableView" destination="IIm-G0-FB0" id="sbj-Br-xDi"/>
                         <segue destination="nzB-PB-ReX" kind="show" identifier="labelsSegue" id="uXk-dR-hfv"/>
+                        <segue destination="uCK-FG-ImI" kind="show" identifier="imageSizeSegue" id="Pti-9h-Bsq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdv-Lm-utL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -498,6 +499,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVj-o9-dVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2387" y="2201"/>
+        </scene>
+        <!--Image SizeVC-->
+        <scene sceneID="mcv-Jj-xDa">
+            <objects>
+                <viewController storyboardIdentifier="imageSizeVC" id="uCK-FG-ImI" customClass="ImageSizeVC" customModule="dataset_recorder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jhU-Dy-u9K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KaS-2K-HRI">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageSizeCell" id="wOq-9D-qIK">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wOq-9D-qIK" id="e1t-eB-lD9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hsK-4O-pOf" firstAttribute="trailing" secondItem="KaS-2K-HRI" secondAttribute="trailing" id="Hyw-f4-pFn"/>
+                            <constraint firstItem="KaS-2K-HRI" firstAttribute="top" secondItem="hsK-4O-pOf" secondAttribute="top" id="ULy-pX-uAX"/>
+                            <constraint firstItem="KaS-2K-HRI" firstAttribute="leading" secondItem="hsK-4O-pOf" secondAttribute="leading" id="V9j-x4-31Q"/>
+                            <constraint firstItem="hsK-4O-pOf" firstAttribute="bottom" secondItem="KaS-2K-HRI" secondAttribute="bottom" id="u1P-Wb-rIn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hsK-4O-pOf"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageSizeTableView" destination="KaS-2K-HRI" id="chF-lS-f6L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTv-Me-gcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3941" y="3003"/>
         </scene>
     </scenes>
     <resources>

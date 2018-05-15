@@ -23,11 +23,6 @@ class LabelsVC: UIViewController {
         self.navigationItem.rightBarButtonItem = addLabelButton
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func onAddTapped(_ sender: Any) {
         editName(name: "", updateHandler: {(name) in
             _ = self.dataset.newLabel(name: name)

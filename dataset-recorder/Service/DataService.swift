@@ -71,6 +71,7 @@ class DataService {
         dataset.name = name
         dataset.lastUsed = Date()
         dataset.type = DatasetType.image.rawValue
+        dataset.imageSize = ImageSize.square480.rawValue
         do {
             try managedContext.save()
         } catch {

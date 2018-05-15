@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DataItem" representedClassName="DataItem" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="fileName" attributeType="String" syncable="YES"/>
@@ -12,6 +12,7 @@
         <relationship name="dataset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dataset" inverseName="labels" inverseEntity="Dataset" syncable="YES"/>
     </entity>
     <entity name="Dataset" representedClassName="Dataset" syncable="YES" codeGenerationType="class">
+        <attribute name="imageSize" optional="YES" attributeType="String" defaultValueString="480x480" syncable="YES"/>
         <attribute name="lastUsed" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
@@ -20,7 +21,7 @@
     </entity>
     <elements>
         <element name="DataItem" positionX="-63" positionY="-27" width="128" height="120"/>
-        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="DataLabel" positionX="-54" positionY="18" width="128" height="75"/>
+        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

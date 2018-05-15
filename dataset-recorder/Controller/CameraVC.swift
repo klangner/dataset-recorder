@@ -35,7 +35,11 @@ class CameraVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(onCameraViewTapped))
         tap.numberOfTapsRequired = 1
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = AVCaptureSession.Preset.hd1920x1080
+        if dataset.imageSize == ImageSize.hd1920x1080.rawValue {
+            captureSession.sessionPreset = AVCaptureSession.Preset.hd1920x1080
+        } else {
+            captureSession.sessionPreset = AVCaptureSession.Preset.vga640x480
+        }
         let backCamera = AVCaptureDevice.default(for: .video)!
         
         do {

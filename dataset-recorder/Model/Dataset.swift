@@ -10,6 +10,11 @@ import UIKit
 import CoreData
 
 
+enum ImageSize: String {
+    case square480 = "480x480"
+    case hd1920x1080 = "1920x1080"
+}
+
 extension Dataset {
 
     // Set last used property to now

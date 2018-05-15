@@ -28,7 +28,7 @@ class ImageVC: UIViewController {
     }
     
     func moveToCameraVC() {
-        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraId") as? CameraVC {
+        if let cameraVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cameraVC") as? CameraVC {
             cameraVC.dataset = dataset
             present(cameraVC, animated: false, completion: nil)
         }
